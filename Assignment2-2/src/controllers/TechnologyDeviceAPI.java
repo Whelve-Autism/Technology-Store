@@ -29,8 +29,7 @@ public class TechnologyDeviceAPI {
 
 
 
-    //the following is isValidId can be updated
-    //to suit your code
+    //the following is isValidId can be updated to suit your code
     /*public boolean isValidId(String id) {
         for (Technology techDev : technologyList) {
             if (techDev.getId().equals(id))

@@ -32,7 +32,7 @@ public class Driver {
 
     private int mainMenu() {
         System.out.println("""
-                         -------Technology Store-------------
+                         -------Technology Store--------
                         |  1) Manufacturer CRUD MENU     |
                         |  2) Technology  CRUD MENU      |
                         |  3) Reports MENU               |
@@ -161,7 +161,7 @@ public class Driver {
 
         private int techAPIMenu() {
             System.out.println(""" 
-                -----Technology Store Menu----- 
+                -----Technology Store Menu-----
                | 1) Add a Tech Device           |
                | 2) Delete a Tech Device        |
                | 3) List all Tech Devices       |
@@ -189,10 +189,10 @@ public class Driver {
     private int reportsMenu() {
         System.out.println(""" 
                 --------Reports Menu ---------
-               | 1) Manufacturers Overview    | 
-               | 2) Technology Overview         |
-               | 0) Return to main menu       | 
-                 -----------------------------  """);
+               | 1) Manufacturers Overview    |
+               | 2) Technology Overview       |
+               | 0) Return to main menu       |
+                 -----------------------------""");
         return ScannerInput.readNextInt("==>>");
     }
 
@@ -202,8 +202,8 @@ public class Driver {
                | 1) List Manufacturers                              |
                | 2) List Manufacturers from a given manufacturer    |
                | 3) List Manufacturers by a given name              |
-               | 0) Return to main menu                             | 
-                 ---------------------------------------------------  """);
+               | 0) Return to main menu                             |
+                 ---------------------------------------------------""");
         return ScannerInput.readNextInt("==>>");
     }
     public void runManufacturerReports() {
