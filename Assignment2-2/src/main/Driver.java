@@ -38,8 +38,8 @@ public class Driver {
                         |  3) Reports MENU               |
                         |--------------------------------|
                         |  4) Search Manufacturers       |
-                        |  5) Search Technology Devices  |  
-                        |  6) Sort Technology Devices    | 
+                        |  5) Search Technology Devices  |
+                        |  6) Sort Technology Devices    |
                         |--------------------------------|
                         |  10) Save all                  |
                         |  11) Load all                  |
@@ -199,7 +199,7 @@ public class Driver {
     private int manufacturerReportsMenu() {
         System.out.println(""" 
                 ---------- Manufacturers Reports Menu  -------------
-               | 1) List Manufacturers                              | 
+               | 1) List Manufacturers                              |
                | 2) List Manufacturers from a given manufacturer    |
                | 3) List Manufacturers by a given name              |
                | 0) Return to main menu                             | 
