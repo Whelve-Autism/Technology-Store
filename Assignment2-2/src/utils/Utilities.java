@@ -55,24 +55,27 @@ public class Utilities {
         return ((numberToCheck >= min) && (numberToCheck <= max));
     }
 
-    public static boolean validRange(float numbertoCheck, float min, float max, float delta) {
-        return ((numbertoCheck >= (min-delta)) && (numbertoCheck <= (max+delta)));
-
+    public static boolean validRange(double numberToCheck, double min, double max) {
+        return ((numberToCheck >= min) && (numberToCheck <= max));
     }
 
-    public static String truncateString(String stringToTruncate, int length){
+    public static boolean validRange(float numbertoCheck, float min, float max, float delta) {
+        return ((numbertoCheck >= (min-delta)) && (numbertoCheck <= (max+delta)));
+    }
+
+    public static String truncateString(String stringToTruncate, int length) {
         if (stringToTruncate != null) {
             if (stringToTruncate.length() <= length) {
                 return stringToTruncate;
             } else {
                 return stringToTruncate.substring(0, length);
             }
-        }
-        else
+        } else {
             return null;
+        }
     }
 
-    public static boolean validStringlength(String strToCheck, int maxLength){
+    public static boolean validStringLength(String strToCheck, int maxLength){
         if (strToCheck != null ){
             return strToCheck.length() <= maxLength;
         }

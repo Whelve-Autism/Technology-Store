@@ -1,11 +1,17 @@
 package models;
 
+import utils.Utilities;
+
 public class Technology {
 
-    private double price = 20;
-    private String id = "unknown";
+    private double price;
+    private String id;
     private String modelName;
     private Manufacturer manufacturer;
+
+    private boolean priceSet = false;
+    private boolean idSet = false;
+    private boolean modelNameSet = false;
 
     public Technology(String modelName, double price, Manufacturer manufacturer, String id) {
         this.modelName = modelName;
@@ -19,10 +25,17 @@ public class Technology {
     }
 
     public void setPrice(double price) {
-        if (price >= 20) {
-            this.price = price;
+        if (!priceSet) {
+            if (Utilities.validRange(price, 20, Double.MAX_VALUE)) {
+                this.price = price;
+            } else {
+                this.price = 20;
+            }
+            priceSet = true;
         } else {
-            this.price = 20;
+            if (Utilities.validRange(price, 20, Double.MAX_VALUE)) {
+                this.price = price;
+            }
         }
     }
 
@@ -31,10 +44,17 @@ public class Technology {
     }
 
     public void setId(String id) {
-        if (id.length() <= 10) {
-            this.id = id;
+        if (!idSet) {
+            if (id == null || id.isEmpty()) {
+                this.id = "unknown";
+            } else if (Utilities.validStringLength(id, 10)) {
+                this.id = id;
+            }
+            idSet = true;
         } else {
-            this.id = id.substring(0, 10);
+            if (Utilities.validStringLength(id, 10)) {
+                this.id = id;
+            }
         }
     }
 
@@ -43,10 +63,17 @@ public class Technology {
     }
 
     public void setModelName(String modelName) {
-        if (modelName.length() <= 30) {
-            this.modelName = modelName;
+        if (!modelNameSet) {
+            if (modelName == null || modelName.isEmpty()) {
+                this.modelName = "unknown";
+            } else if (Utilities.validStringLength(modelName, 30)) {
+                this.modelName = modelName;
+            }
+            modelNameSet = true;
         } else {
-            this.modelName = modelName.substring(0, 30);
+            if (Utilities.validStringLength(modelName, 30)) {
+                this.modelName = modelName;
+            }
         }
     }
 
@@ -60,6 +87,6 @@ public class Technology {
 
     @Override
     public String toString() {
-        return STR."Technology{id=\{id}, modelName=\{modelName}, manufacturer=\{manufacturer}, price=\{price}}";
+        return STR."modelName=\{modelName}, price=\{price}, manufacturer=\{manufacturer}, id=\{id}";
     }
 }

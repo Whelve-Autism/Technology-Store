@@ -18,8 +18,9 @@ public class Manufacturer {
     }
 
     public void setManufacturerName(String manufacturerName) {
-        if (Utilities.validStringlength(manufacturerName, 20))
-        this.manufacturerName = manufacturerName;
+        if (Utilities.validStringLength(manufacturerName, 20)) {
+            this.manufacturerName = manufacturerName;
+        }
     }
 
     public int getNumEmployees() {
@@ -27,22 +28,24 @@ public class Manufacturer {
     }
 
     public void setNumEmployees(int numEmployees) {
-        if (numEmployees >=1)
-          this.numEmployees = numEmployees;
+        if (numEmployees >= 1) {
+            this.numEmployees = numEmployees;
+        }
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Manufacturer that)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Manufacturer that)) {
+            return false;
+        }
         return numEmployees == that.numEmployees && Objects.equals(manufacturerName, that.manufacturerName);
     }
 
     @Override
     public String toString() {
-        return "Manufacturer{" +
-                "manufacturerName='" + manufacturerName + '\'' +
-                ", numEmployees=" + numEmployees + (numEmployees==1 ? " employee" : " employees")+
-                '}';
+        return STR."Manufacturer{manufacturerName='\{manufacturerName}', numEmployees=\{numEmployees}\{numEmployees == 1 ? " employee" : " employees"}}";
     }
 }

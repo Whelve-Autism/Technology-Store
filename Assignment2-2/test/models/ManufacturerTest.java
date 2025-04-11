@@ -6,9 +6,25 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * 此类用于测试 Manufacturer 类。
+ * This class contains unit tests for the Manufacturer class.
+ *
+ * @author Guoqing Lu, Fan Xinkang
+ * @version 1.1
+ * @since version 0.0
+ */
 class ManufacturerTest {
+
     Manufacturer manValid, manInvalid, manBorder, manBelowBorder, manEmpty;
 
+    /**
+     * 在每个测试方法执行前进行初始化操作，确保测试数据的干净状态，避免测试之间的相互影响。
+     * Initialize before each test method to ensure the cleanliness of the test data and avoid mutual influence between tests.
+     *
+     * @author Guoqing Lu
+     * @since version 0.0
+     */
     @BeforeEach
     public void setup(){
         manValid = new Manufacturer("Samsung", 1000);
@@ -18,6 +34,13 @@ class ManufacturerTest {
         manEmpty = new Manufacturer("", -10);
     }
 
+    /**
+     * 测试 Manufacturer 类的构造函数，包括 manufacturerName 和 numEmployees 的验证。
+     * This method tests the constructor of the Manufacturer class, including the validation of manufacturerName and numEmployees.
+     *
+     * @author Guoqing Lu
+     * @since version 0.0
+     */
     @Test
     void constructorTests() {
         //testing manufacturerName - at <20, 20, 21 chars
@@ -32,9 +55,15 @@ class ManufacturerTest {
         assertEquals(1, manBorder.getNumEmployees());    // check that 1 is accepted as valid input
         assertEquals(1, manBelowBorder.getNumEmployees());   // check that default set when 0 is input (invalid)
         assertEquals(1, manEmpty.getNumEmployees());      // check that default is set when negative value is input.
-
     }
 
+    /**
+     * 测试 Manufacturer 类的 getter 和 setter 方法，包括 manufacturerName 和 numEmployees 的验证。
+     * This method tests the getter and setter methods of the Manufacturer class, including the validation of manufacturerName and numEmployees.
+     *
+     * @author Guoqing Lu
+     * @since version 0.0
+     */
     @Test
     void manufacturerNameGetAndSetWorkingCorrectly() {
         assertEquals("Samsung", manValid.getManufacturerName());
@@ -50,9 +79,13 @@ class ManufacturerTest {
         assertEquals("", manValid.getManufacturerName());
     }
 
-
-
-
+    /**
+     * 测试 Manufacturer 类的 getter 和 setter 方法，包括 manufacturerName 和 numEmployees 的验证。
+     * This method tests the getter and setter methods of the Manufacturer class, including the validation of manufacturerName and numEmployees.
+     *
+     * @author Guoqing Lu
+     * @since version 0.0
+     */
     @Test
     void numEmployeesGetAndSetWorkingCorrectly() {
         assertEquals(1000, manValid.getNumEmployees());
@@ -69,20 +102,43 @@ class ManufacturerTest {
 
     }
 
+    /**
+     * 测试 Manufacturer 类的 equals 方法，包括 Manufacturer 对象的比较。
+     * This method tests the equals method of the Manufacturer class, including the comparison of Manufacturer objects.
+     *
+     * @author Guoqing Lu
+     * @since version 0.0
+     */
     @Test
     void validatingTheEqualsMethod() {
         //checking that equals works when the objects are at the same location
         Manufacturer copyManInvalid = manValid;
-        assertEquals(manValid, manValid);
+        assertEquals(manValid, copyManInvalid);
         //now checking that true is returned when the values in separate objects are the same
-        assertEquals(manValid, new Manufacturer("Samsung", 1000));
+        assertEquals(new Manufacturer("Samsung", 1000), manValid);
         //checking that false is returned  when one or both fields are different
-        assertNotEquals(manValid, new Manufacturer("Tesla", 1000));
-        assertNotEquals(manValid, new Manufacturer("Samsung", 1999));
-        assertNotEquals(manValid, new Manufacturer("Tesla", 1999));
+        assertNotEquals(new Manufacturer("Tesla", 1000), manValid);
+        assertNotEquals(new Manufacturer("Samsung", 1999), manValid);
+        assertNotEquals(new Manufacturer("Tesla", 1999), manValid);
     }
+
+    /**
+     * 测试 Manufacturer 类的 toString 方法。
+     * This method tests the toString method of the Manufacturer class.
+     *
+     * @author Guoqing Lu
+     * @since version 0.0
+     */
     @Nested
     class ToString {
+
+        /**
+         * 测试 Manufacturer 类的 toString 方法，验证字符串表示是否包含制造商名称和员工数量。
+         * This method tests the toString method of the Manufacturer class to ensure that the string representation includes the manufacturer name and the number of employees.
+         *
+         * @author Guoqing Lu
+         * @since version 0.0
+         */
         @Test
         void toStringContainsAllFieldsInObject() {
             //checking a Manufacturer contains manufacturer name and number of employees
@@ -95,6 +151,14 @@ class ManufacturerTest {
             assertTrue(manuStringSingleEmployee.contains("Samsungs901234567890"));
             assertTrue(manuStringSingleEmployee.contains("1"));
         }
+
+        /**
+         * 测试 Manufacturer 类的 toString 方法，验证当员工数量为单数或复数时，字符串表示是否正确包含 "employee" 或 "employees"。
+         * This method tests the toString method of the Manufacturer class to ensure that the string representation correctly includes "employee" or "employees" based on the number of employees.
+         *
+         * @author Guoqing Lu
+         * @since version 0.0
+         */
         @Test
         void toStringAddsEmployeesToTheString() {
             //checking a Manufacturer contains "employees" when number of employees is plural, 1 otherwise.
@@ -104,7 +168,10 @@ class ManufacturerTest {
             //checking for singular
             String manuStringSingleEmployee = manBorder.toString();
             assertTrue(manuStringSingleEmployee.contains("1 employee"));
-
         }
     }
 }
+/*
+ * End of test.models.ManufacturerTest Class.
+ * Checked by Fan Xinkang on 2025/04/11.
+ */

@@ -1,9 +1,14 @@
 package models;
 
+import utils.Utilities;
+
 public abstract class WearableDevice extends Technology {
 
     private String material;
     private String size;
+
+    private boolean materialSet = false;
+    private boolean sizeSet = false;
 
     public WearableDevice(String modelName, double price, Manufacturer manufacturer, String id, String material, String size) {
         super(modelName, price, manufacturer, id);
@@ -16,10 +21,13 @@ public abstract class WearableDevice extends Technology {
     }
 
     public void setMaterial(String material) {
-        if (material.length() < 20) {
-            this.material = material;
+        if (!materialSet) {
+            this.material = Utilities.truncateString(material, 20);
+            materialSet = true;
         } else {
-            this.material = material.substring(0, 20);
+            if (Utilities.validRange(material.length(), 1, 20)) {
+                this.material = material;
+            }
         }
     }
 
@@ -28,10 +36,13 @@ public abstract class WearableDevice extends Technology {
     }
 
     public void setSize(String size) {
-        if (size.length() < 10) {
-            this.size = size;
+        if (!sizeSet) {
+            this.size = Utilities.truncateString(size, 10);
+            sizeSet = true;
         } else {
-            this.size = size.substring(0, 10);
+            if (Utilities.validRange(size.length(), 1, 10)) {
+                this.size = size;
+            }
         }
     }
 
@@ -41,6 +52,6 @@ public abstract class WearableDevice extends Technology {
 
     @Override
     public String toString() {
-        return super.toString() + "\n" + STR."WearableDevice{material='\{material}', size='\{size}'} ";
+        return super.toString() + "\n" + STR."material='\{material}', size='\{size}'";
     }
 }

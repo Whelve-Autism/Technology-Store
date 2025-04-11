@@ -2,7 +2,7 @@ package models;
 
 public class Tablet extends ComputingDevice {
 
-    private String operatingSystem;
+    private String operatingSystem = "Windows";
 
     public Tablet(String modelName, double price, Manufacturer manufacturer, String id, String processor, int storage, String operatingSystem) {
         super(modelName, price, manufacturer, id, processor, storage);
