@@ -1,6 +1,8 @@
 package models;
 
-public class SmartWatch extends WearableDevice{
+import utils.DisplayTypeUtility;
+
+public class SmartWatch extends WearableDevice {
 
     private String displayType = "LCD";
 
@@ -14,7 +16,11 @@ public class SmartWatch extends WearableDevice{
     }
 
     public void setDisplayType(String displayType) {
-        this.displayType = displayType;
+        if (DisplayTypeUtility.isValidDisplayType(displayType)) {
+            this.displayType = displayType;
+        } else {
+            this.displayType = "LCD";
+        }
     }
 
     @Override

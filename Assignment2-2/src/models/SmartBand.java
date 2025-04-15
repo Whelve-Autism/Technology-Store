@@ -1,6 +1,6 @@
 package models;
 
-public class SmartBand  extends WearableDevice{
+public class SmartBand extends WearableDevice {
 
     private boolean heartRateMonitor;
 

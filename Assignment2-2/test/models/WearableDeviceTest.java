@@ -1,16 +1,19 @@
 package models;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.experimental.runners.Enclosed;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@RunWith(Enclosed.class)
+/**
+ * 此类用于测试 WearableDevice 类。
+ * This class is used to test the WearableDevice class.
+ *
+ * @author Fan Xinkang
+ * @since version 1.1
+ */
 public class WearableDeviceTest {
 
     private SmartBand validSmartBand, edgeCaseSmartBand, invalidSmartBand;
@@ -24,8 +27,8 @@ public class WearableDeviceTest {
      * @author Fan Xinkang
      * @since version 1.1
      */
-    @Before
-    public void setUp() {
+    @BeforeEach
+    void setUp() {
 
         Manufacturer validManufacturer = new Manufacturer("0123456789012345678", 1);
         Manufacturer edgeCaseManufacturer = new Manufacturer("01234567890123456789", 1);
@@ -47,11 +50,9 @@ public class WearableDeviceTest {
      * @author Fan Xinkang
      * @since version 1.1
      */
-    @After
-    public void tearDown() {
-
+    @AfterEach
+    void tearDown() {
         validSmartBand = edgeCaseSmartBand = invalidSmartBand = null;
-
         validSmartWatch = edgeCaseSmartWatch = invalidSmartWatch = null;
     }
 
@@ -100,7 +101,7 @@ public class WearableDeviceTest {
          * @since version 1.1
          */
         @Test
-        public void testGetSize() {
+        void testGetSize() {
 
             assertEquals("012345678", validSmartBand.getSize());
             assertEquals("0123456789", edgeCaseSmartBand.getSize());
@@ -149,7 +150,7 @@ public class WearableDeviceTest {
          * @since version 1.1
          */
         @Test
-        public void testSetMaterial() {
+        void testSetMaterial() {
 
             validSmartBand.setMaterial("Steel");
             assertEquals("Steel", validSmartBand.getMaterial());
@@ -196,7 +197,7 @@ public class WearableDeviceTest {
          * @since version 1.1
          */
         @Test
-        public void testSetSize() {
+        void testSetSize() {
 
             validSmartBand.setSize("42mm");
             assertEquals("42mm", validSmartBand.getSize());
@@ -243,7 +244,7 @@ public class WearableDeviceTest {
      * @since version 1.1
      */
     @Test
-    public void testConnectToInternet() {
+    void testConnectToInternet() {
 
         assertEquals("Connects to the internet via Companion App.", validSmartBand.connectToInternet());
         assertEquals("Connects to the internet via Companion App.", edgeCaseSmartBand.connectToInternet());
@@ -262,47 +263,65 @@ public class WearableDeviceTest {
      * @since version 1.1
      */
     @Test
-    public void testToString() {
+    void testToString() {
 
         String expected = """
-            Model Name: 01234567890123456789012345678, Price: $21.0, Manufacturer: 0123456789012345678, Num Employees: 1, ID: 012345678
-            material='0123456789012345678', size='012345678'
+            Model Name: 01234567890123456789012345678, Price: $21.0, Manufacturer{Name: 0123456789012345678, Num Employees: 1 employee}, ID: 012345678
+            Material: 0123456789012345678, Size: 012345678
+            Includes Heart Rate Monitor.
+            Connects to the internet via Companion App.
+            Insurance Premium: $1.4700000000000002
             """;
-        assertEquals(expected, validSmartBand.toString().trim());
+        assertEquals(expected, validSmartBand.toString());
 
         expected = """
-            Model Name: 012345678901234567890123456789, Price: $20.0, Manufacturer: 01234567890123456789, Num Employees: 1, ID: 0123456789
-            material='01234567890123456789', size='0123456789'
+            Model Name: 012345678901234567890123456789, Price: $20.0, Manufacturer{Name: 01234567890123456789, Num Employees: 1 employee}, ID: 0123456789
+            Material: 01234567890123456789, Size: 0123456789
+            Includes Heart Rate Monitor.
+            Connects to the internet via Companion App.
+            Insurance Premium: $1.4000000000000001
             """;
-        assertEquals(expected, edgeCaseSmartBand.toString().trim());
+        assertEquals(expected, edgeCaseSmartBand.toString());
 
         expected = """
-            Model Name: 0123456789012345678901234567890, Price: $19.0, Manufacturer: 012345678901234567890, Num Employees: 1, ID: 01234567890
-            material='01234567890123456789', size='01234567890'
+            Model Name: 012345678901234567890123456789, Price: $20.0, Manufacturer{Name: 01234567890123456789, Num Employees: 1 employee}, ID: unknown
+            Material: 01234567890123456789, Size: 0123456789
+            No Heart Rate Monitor included.
+            Connects to the internet via Companion App.
+            Insurance Premium: $1.4000000000000001
             """;
-        assertEquals(expected, invalidSmartBand.toString().trim());
+        assertEquals(expected, invalidSmartBand.toString());
 
         expected = """
-            Model Name: 01234567890123456789012345678, Price: $21.0, Manufacturer: 0123456789012345678, Num Employees: 1, ID: 012345678
-            material='0123456789012345678', size='012345678'
+            Model Name: 01234567890123456789012345678, Price: $21.0, Manufacturer{Name: 0123456789012345678, Num Employees: 1 employee}, ID: 012345678
+            Material: 0123456789012345678, Size: 012345678
+            Display Type: AMOLED
+            Connects to the internet via bluetooth.
+            Insurance Premium: $1.26
             """;
-        assertEquals(expected, validSmartWatch.toString().trim());
+        assertEquals(expected, validSmartWatch.toString());
 
         expected = """
-            Model Name: 012345678901234567890123456789, Price: $20.0, Manufacturer: 01234567890123456789, Num Employees: 1, ID: 0123456789
-            material='01234567890123456789', size='0123456789'
+            Model Name: 012345678901234567890123456789, Price: $20.0, Manufacturer{Name: 01234567890123456789, Num Employees: 1 employee}, ID: 0123456789
+            Material: 01234567890123456789, Size: 0123456789
+            Display Type: AMOLED
+            Connects to the internet via bluetooth.
+            Insurance Premium: $1.2
             """;
-        assertEquals(expected, edgeCaseSmartWatch.toString().trim());
+        assertEquals(expected, edgeCaseSmartWatch.toString());
 
         expected = """
-            Model Name: 0123456789012345678901234567890, Price: $19.0, Manufacturer: 012345678901234567890, Num Employees: 1, ID: 01234567890
-            material='01234567890123456789', size='01234567890'
+            Model Name: 012345678901234567890123456789, Price: $20.0, Manufacturer{Name: 01234567890123456789, Num Employees: 1 employee}, ID: unknown
+            Material: 01234567890123456789, Size: 0123456789
+            Display Type: LCD
+            Connects to the internet via bluetooth.
+            Insurance Premium: $1.2
             """;
-        assertEquals(expected, invalidSmartWatch.toString().trim());
+        assertEquals(expected, invalidSmartWatch.toString());
     }
 
 }
 /*
  * End of test.models.WearableDeviceTest Class.
- * Checked by Fan Xinkang on 2025/04/11.
+ * Checked by Fan Xinkang on 2025/04/15.
  */

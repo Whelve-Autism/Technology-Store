@@ -1,12 +1,16 @@
 package models;
 
+import utils.OperatingSystemUtility;
+
 public class Tablet extends ComputingDevice {
 
     private String operatingSystem = "Windows";
 
+    private boolean operatingSystemSet = false;
+
     public Tablet(String modelName, double price, Manufacturer manufacturer, String id, String processor, int storage, String operatingSystem) {
         super(modelName, price, manufacturer, id, processor, storage);
-        this.operatingSystem = operatingSystem;
+        setOperatingSystem(operatingSystem);
     }
 
     public String getOperatingSystem() {
@@ -14,7 +18,18 @@ public class Tablet extends ComputingDevice {
     }
 
     public void setOperatingSystem(String operatingSystem) {
-        this.operatingSystem = operatingSystem;
+        if (!operatingSystemSet) {
+            if (OperatingSystemUtility.isValidOperatingSystem(operatingSystem)) {
+                this.operatingSystem = operatingSystem;
+                operatingSystemSet = true;
+            } else {
+                this.operatingSystem = "Windows";
+            }
+        } else {
+            if (OperatingSystemUtility.isValidOperatingSystem(operatingSystem)) {
+                this.operatingSystem = operatingSystem;
+            }
+        }
     }
 
 

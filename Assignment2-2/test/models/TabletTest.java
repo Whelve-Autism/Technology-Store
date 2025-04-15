@@ -124,13 +124,25 @@ public class TabletTest {
      */
     @Test
     public void testToString() {
-        String expected = "Operating System: Android, Insurance Premium: €7.99";
+        String expected = """
+                Model Name: Galaxy Tab S7, Price: $799.99, Manufacturer{Name: Samsung, Num Employees: 333 employees}, ID: 123456
+                Storage: 64GB, Processor: Snapdragon 865
+                Operating System: Android
+                Connects to the internet via Wi-Fi
+                Insurance Premium: $7.9999
+                """;
         assertTrue( validTablet.toString().contains(expected));
-        expected = "Operating System: Windows, Insurance Premium: €0.2";
+        expected = """
+                Model Name: Galaxy Tab S7 version 1 c.0946, Price: $20.0, Manufacturer{Name: ABCDEFGHIJKLMNOPQRST, Num Employees: 1 employee}, ID: unknown
+                Storage: 8GB, Processor: Snapdragon 865567892
+                Operating System: Windows
+                Connects to the internet via Wi-Fi
+                Insurance Premium: $0.2
+                """;
         assertTrue( invalidTablet.toString().contains(expected));
     }
 }
 /*
  * End of test.models.TabletTest Class.
- * Checked by Fan Xinkang on 2025/04/11.
+ * Checked by Fan Xinkang on 2025/04/15.
  */

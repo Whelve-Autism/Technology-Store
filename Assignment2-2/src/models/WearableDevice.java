@@ -12,8 +12,8 @@ public abstract class WearableDevice extends Technology {
 
     public WearableDevice(String modelName, double price, Manufacturer manufacturer, String id, String material, String size) {
         super(modelName, price, manufacturer, id);
-        this.material = material;
-        this.size = size;
+        setMaterial(material);
+        setSize(size);
     }
 
     public String getMaterial() {
@@ -22,10 +22,14 @@ public abstract class WearableDevice extends Technology {
 
     public void setMaterial(String material) {
         if (!materialSet) {
-            this.material = Utilities.truncateString(material, 20);
+            if (Utilities.validRange(material.length(), 0, 20)) {
+                this.material = material;
+            } else {
+                this.material = material.substring(0, 20);
+            }
             materialSet = true;
         } else {
-            if (Utilities.validRange(material.length(), 1, 20)) {
+            if (Utilities.validRange(material.length(), 0, 20)) {
                 this.material = material;
             }
         }
@@ -52,6 +56,6 @@ public abstract class WearableDevice extends Technology {
 
     @Override
     public String toString() {
-        return super.toString() + "\n" + STR."material='\{material}', size='\{size}'";
+        return super.toString() + "\n" + STR."Material: \{material}, Size: \{size}";
     }
 }

@@ -121,9 +121,9 @@ class SmartWatchTest {
 
             assertEquals("LCD", invalidSmartWatch.getDisplayType());
             invalidSmartWatch.setDisplayType("OLED");
-            assertEquals("OLED", invalidSmartWatch.getDisplayType());
-            invalidSmartWatch.setDisplayType("LCD");
             assertEquals("LCD", invalidSmartWatch.getDisplayType());
+            invalidSmartWatch.setDisplayType("LED");
+            assertEquals("LED", invalidSmartWatch.getDisplayType());
         }
     }
 
@@ -152,31 +152,31 @@ class SmartWatchTest {
     void testToString() {
 
         String expected = """
-            Model Name: 01234567890123456789012345678, Price: $21.0, Manufacturer: 0123456789012345678, Num Employees: 1, ID: 012345678
+            Model Name: 01234567890123456789012345678, Price: $21.0, Manufacturer{Name: 0123456789012345678, Num Employees: 1 employee}, ID: 012345678
             Material: 0123456789012345678, Size: 012345678
             Display Type: AMOLED
             Connects to the internet via bluetooth.
             Insurance Premium: $1.26
             """;
-        assertEquals(expected, validSmartWatch.toString().trim());
+        assertEquals(expected, validSmartWatch.toString());
 
         expected = """
-            Model Name: 012345678901234567890123456789, Price: $20.0, Manufacturer: 01234567890123456789, Num Employees: 1, ID: 0123456789
+            Model Name: 012345678901234567890123456789, Price: $20.0, Manufacturer{Name: 01234567890123456789, Num Employees: 1 employee}, ID: 0123456789
             Material: 01234567890123456789, Size: 0123456789
             Display Type: AMOLED
             Connects to the internet via bluetooth.
             Insurance Premium: $1.2
             """;
-        assertEquals(expected, edgeCaseSmartWatch.toString().trim());
+        assertEquals(expected, edgeCaseSmartWatch.toString());
 
         expected = """
-            Model Name: 0123456789012345678901234567890, Price: $19.0, Manufacturer: 012345678901234567890, Num Employees: 1, ID: 01234567890
-            Material: 012345678901234567890, Size: 01234567890
+            Model Name: 012345678901234567890123456789, Price: $20.0, Manufacturer{Name: 01234567890123456789, Num Employees: 1 employee}, ID: unknown
+            Material: 01234567890123456789, Size: 0123456789
             Display Type: LCD
             Connects to the internet via bluetooth.
             Insurance Premium: $1.2
             """;
-        assertEquals(expected, invalidSmartWatch.toString().trim());
+        assertEquals(expected, invalidSmartWatch.toString());
     }
 
 }

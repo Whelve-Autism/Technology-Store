@@ -166,33 +166,32 @@ class SmartBandTest {
     void testToString() {
 
         String expected = """
-            Model Name: 01234567890123456789012345678, Price: $21.0, Manufacturer: 0123456789012345678, Num Employees: 1, ID: 012345678
+            Model Name: 01234567890123456789012345678, Price: $21.0, Manufacturer{Name: 0123456789012345678, Num Employees: 1 employee}, ID: 012345678
             Material: 0123456789012345678, Size: 012345678
             Includes Heart Rate Monitor.
             Connects to the internet via Companion App.
-            Insurance Premium: $1.47
+            Insurance Premium: $1.4700000000000002
             """;
-        assertEquals(expected, validSmartBand.toString().trim());
+        assertEquals(expected, validSmartBand.toString());
 
         expected = """
-            Model Name: 012345678901234567890123456789, Price: $20.0, Manufacturer: 01234567890123456789, Num Employees: 1, ID: 0123456789
+            Model Name: 012345678901234567890123456789, Price: $20.0, Manufacturer{Name: 01234567890123456789, Num Employees: 1 employee}, ID: 0123456789
             Material: 01234567890123456789, Size: 0123456789
             Includes Heart Rate Monitor.
             Connects to the internet via Companion App.
-            Insurance Premium: $1.40
+            Insurance Premium: $1.4000000000000001
             """;
-        assertEquals(expected, edgeCaseSmartBand.toString().trim());
+        assertEquals(expected, edgeCaseSmartBand.toString());
 
         expected = """
-            Model Name: 0123456789012345678901234567890, Price: $19.0, Manufacturer: 012345678901234567890, Num Employees: 1, ID: 01234567890
-            Material: 012345678901234567890, Size: 01234567890
+            Model Name: 012345678901234567890123456789, Price: $20.0, Manufacturer{Name: 01234567890123456789, Num Employees: 1 employee}, ID: unknown
+            Material: 01234567890123456789, Size: 0123456789
             No Heart Rate Monitor included.
             Connects to the internet via Companion App.
-            Insurance Premium: $1.40
+            Insurance Premium: $1.4000000000000001
             """;
-        assertEquals(expected, invalidSmartBand.toString().trim());
+        assertEquals(expected, invalidSmartBand.toString());
     }
-
 }
 /*
  * End of test.models.SmartBandTest Class.

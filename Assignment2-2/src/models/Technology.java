@@ -4,20 +4,20 @@ import utils.Utilities;
 
 public class Technology {
 
-    private double price;
-    private String id;
     private String modelName;
+    private double price;
     private Manufacturer manufacturer;
+    private String id;
 
+    private boolean modelNameSet = false;
     private boolean priceSet = false;
     private boolean idSet = false;
-    private boolean modelNameSet = false;
 
     public Technology(String modelName, double price, Manufacturer manufacturer, String id) {
-        this.modelName = modelName;
-        this.price = price;
+        setModelName(modelName);
+        setPrice(price);
         this.manufacturer = manufacturer;
-        this.id = id;
+        setId(id);
     }
 
     public double getPrice() {
@@ -45,14 +45,14 @@ public class Technology {
 
     public void setId(String id) {
         if (!idSet) {
-            if (id == null || id.isEmpty()) {
-                this.id = "unknown";
-            } else if (Utilities.validStringLength(id, 10)) {
+            if (id.length() <= 10) {
                 this.id = id;
+            } else {
+                this.id = "unknown";
             }
             idSet = true;
         } else {
-            if (Utilities.validStringLength(id, 10)) {
+            if (id.length() <= 10) {
                 this.id = id;
             }
         }
@@ -68,6 +68,8 @@ public class Technology {
                 this.modelName = "unknown";
             } else if (Utilities.validStringLength(modelName, 30)) {
                 this.modelName = modelName;
+            } else {
+                this.modelName = modelName.substring(0, 30);
             }
             modelNameSet = true;
         } else {
@@ -87,6 +89,6 @@ public class Technology {
 
     @Override
     public String toString() {
-        return STR."modelName=\{modelName}, price=\{price}, manufacturer=\{manufacturer}, id=\{id}";
+        return STR."Model Name: \{modelName}, Price: $\{price}, \{manufacturer}, ID: \{id}";
     }
 }
