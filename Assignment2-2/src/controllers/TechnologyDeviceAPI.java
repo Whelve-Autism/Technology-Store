@@ -11,7 +11,16 @@ import java.io.*;
 import java.util.*;
 
 //TODO - ensure that this class implements iSerializer
-public class TechnologyDeviceAPI {
+
+/**
+ * 此类用于处理技术设备的数据。
+ * This class is used to handle technology device data.
+ *
+ * @author Fan Xinkang, Xu Shiyi, Lu Siyu
+ * @version 3.0
+ * @since version 2.0
+ */
+public class TechnologyDeviceAPI implements ISerializer {
 
     //TODO - create 2 fields
     private File file;
@@ -27,7 +36,13 @@ public class TechnologyDeviceAPI {
 
     // 添加技术设备
     public boolean addTechnologyDevice(Technology technology) {
-        return false;
+        //此方法将一个技术对象（作为参数传递）添加到ArrayList技术列表中。
+        if (technology != null) {
+            technologyList.add(technology);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     // 根据索引获取技术产品
@@ -184,7 +199,6 @@ public class TechnologyDeviceAPI {
     public String fileName() {
         return "";
     }
-
 
     // 验证字符串是否有效
     public boolean isValid(String str) {

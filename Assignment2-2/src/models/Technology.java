@@ -2,6 +2,14 @@ package models;
 
 import utils.Utilities;
 
+/**
+ * 此类用于创建 Technology 对象。
+ * This class is used to create Technology objects.
+ *
+ * @author Fan Xinkang
+ * @version 1.0
+ * @since version 1,0
+ */
 public class Technology {
 
     private String modelName;
@@ -13,6 +21,20 @@ public class Technology {
     private boolean priceSet = false;
     private boolean idSet = false;
 
+    /**
+     * 创建 Technology 对象。
+     * Constructor for Technology.
+     *
+     * @param modelName 型号。
+     *                  Model name.
+     * @param price 价格。
+     *              Price.
+     * @param manufacturer 生产商。
+     *                     Manufacturer.
+     * @param id ID.
+     * @author Fan Xinkang
+     * @since version 1.0
+     */
     public Technology(String modelName, double price, Manufacturer manufacturer, String id) {
         setModelName(modelName);
         setPrice(price);
@@ -20,6 +42,10 @@ public class Technology {
         setId(id);
     }
 
+    /*
+      封装。
+      Encapsulation.
+     */
     public double getPrice() {
         return price;
     }
@@ -87,8 +113,21 @@ public class Technology {
         this.manufacturer = manufacturer;
     }
 
+    /**
+     * 重写 toString 方法，以便打印 Technology 对象。
+     * Override the toString method to print Technology objects.
+     *
+     * @return 字符串表示。
+     *         String representation.
+     * @author Fan Xinkang
+     * @since version 1.0
+     */
     @Override
     public String toString() {
         return STR."Model Name: \{modelName}, Price: $\{price}, \{manufacturer}, ID: \{id}";
     }
 }
+/*
+ * End of models.Technology Class.
+ * Checked by Fan Xinkang on 2025/04/15.
+ */
