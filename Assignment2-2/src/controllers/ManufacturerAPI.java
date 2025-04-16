@@ -18,7 +18,7 @@ public class ManufacturerAPI  implements ISerializer {
 
     private File file;
 
-    public ManufacturerAPI(File file)  {
+    public ManufacturerAPI(File file) {
         this.file = file;
     }
 

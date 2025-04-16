@@ -71,7 +71,7 @@ public class Technology {
 
     public void setId(String id) {
         if (!idSet) {
-            if (id.length() <= 10) {
+            if (id != null && id.length() <= 10) {
                 this.id = id;
             } else {
                 this.id = "unknown";
