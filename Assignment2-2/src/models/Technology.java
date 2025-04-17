@@ -10,7 +10,7 @@ import utils.Utilities;
  * @version 1.0
  * @since version 1,0
  */
-public class Technology {
+public abstract class Technology {
 
     private String modelName;
     private double price;
@@ -114,6 +114,28 @@ public class Technology {
     }
 
     /**
+     * 抽象方法，用于连接到互联网。
+     * Abstract method to connect to the internet.
+     *
+     * @return 连接结果。
+     *         Connection result.
+     * @author Fan Xinkang
+     * @since version 3.1
+     */
+    public abstract String connectToInternet();
+
+    /**
+     * 抽象方法，用于获取保险保费。
+     * Abstract method to get insurance premium.
+     *
+     * @return 保险保费。
+     *         Insurance premium.
+     * @author Fan Xinkang
+     * @since version 3.1
+     */
+    public abstract double getInsurancePremium();
+
+    /**
      * 重写 toString 方法，以便打印 Technology 对象。
      * Override the toString method to print Technology objects.
      *
@@ -122,6 +144,7 @@ public class Technology {
      * @author Fan Xinkang
      * @since version 1.0
      */
+
     @Override
     public String toString() {
         return STR."Model Name: \{modelName}, Price: $\{price}, \{manufacturer}, ID: \{id}";

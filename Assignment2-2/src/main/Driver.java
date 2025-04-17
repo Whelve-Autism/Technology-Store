@@ -11,8 +11,6 @@ import java.io.File;
 
 public class Driver {
 
-
-
         private TechnologyDeviceAPI techAPI;
         private ManufacturerAPI manufacturerAPI;
 
