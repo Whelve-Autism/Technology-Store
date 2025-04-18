@@ -93,7 +93,7 @@ public abstract class Technology {
             if (modelName == null || modelName.isEmpty()) {
                 this.modelName = "unknown";
             } else {
-                Utilities.truncateString(modelName, 30);
+                this.modelName = Utilities.truncateString(modelName, 30);
             }
             modelNameSet = true;
         } else {

@@ -52,7 +52,7 @@ public abstract class WearableDevice extends Technology {
 
     public void setMaterial(String material) {
         if (!materialSet) {
-            Utilities.truncateString(material, 20);
+            this.material = Utilities.truncateString(material, 20);
             materialSet = true;
         } else {
             if (Utilities.validRange(material.length(), 0, 20)) {
