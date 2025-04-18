@@ -71,14 +71,14 @@ public abstract class Technology {
 
     public void setId(String id) {
         if (!idSet) {
-            if (id != null && id.length() <= 10) {
+            if (Utilities.validStringLength(id, 10)) {
                 this.id = id;
             } else {
                 this.id = "unknown";
             }
             idSet = true;
         } else {
-            if (id.length() <= 10) {
+            if (Utilities.validStringLength(id, 10)) {
                 this.id = id;
             }
         }
@@ -92,10 +92,8 @@ public abstract class Technology {
         if (!modelNameSet) {
             if (modelName == null || modelName.isEmpty()) {
                 this.modelName = "unknown";
-            } else if (Utilities.validStringLength(modelName, 30)) {
-                this.modelName = modelName;
             } else {
-                this.modelName = modelName.substring(0, 30);
+                Utilities.truncateString(modelName, 30);
             }
             modelNameSet = true;
         } else {

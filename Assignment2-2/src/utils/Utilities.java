@@ -1,68 +1,134 @@
 package utils;
 
-import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 此类用于提供一些通用的 utility 方法。
+ * This class is used to provide some common utility methods.
+ *
+ * @author Guoqing Lu, Fan Xinkang
+ * @version 1.0
+ * @since version 0.0
+ */
 public class Utilities {
 
     /**
-     * This method takes in a decimal point number and truncates it to two decimal places.  Note
-     * that the method does NOT round when truncating; the numbers after the two decimal places are
-     * just removed.
-     * <p>
-     * The method does the truncating in this manner:
-     * - multiply the number by 100 e.g. 16.543235523 * 100 = 1654.3235523
-     * - cast the multiplied number as an in e.g. 1654.3235523 = 1654
-     * - finally, the multiplied and casted number is divided by 100 and returned e.g. 1654 = 16.54
+     * 将数字转换为两位小数。
+     * Converts the number to two decimal places.
      *
-     * @param number Number to be truncated to two decimal places
-     * @return the number, passed as a parameter, truncated to two decimal places (note: not rounded)
+     * @param number 要转换的数字。
+     *               The number to convert.
+     * @return 被转换的数字。
+     *         The number converted.
+     * @author Guoqing Lu
+     * @since version 0.0
      */
     public static double toTwoDecimalPlaces(double number) {
         return (int) (number * 100) / 100.0;
     }
 
     /**
-     * This method returns Y if the booleanToConvert value is true. Returns N otherwise.
+     * 判断一个布尔值，如果为 true，则返回 Y，如果为 false，则返回 N。
+     * Converts a boolean value to Y or N.
      *
-     * @param booleanToConvert The boolean value that will be used to determine Y/N
-     * @return Returns Y if the booleanToConvert value is true. Returns N otherwise.
+     * @param booleanToConvert 要转换的布尔值。
+     *                         The boolean value to convert.
+     * @return 被转换的布尔值。
+     *         The boolean value converted.
+     * @author Guoqing Lu
+     * @since version 0.0
      */
     public static char booleanToYN(boolean booleanToConvert) {
         return booleanToConvert ? 'Y' : 'N';
     }
 
     /**
-     * This method returns true if the charToConvert value is Y or y. Returns false in all other cases.
+     * 判断一个字符，如果为 Y 或 y，则返回 true，否则返回 false。
+     * Converts a character to a boolean value.
      *
-     * @param charToConvert The char value that will be used to determine true/false.
-     * @return Returns true if the charToConvert value is Y or y. Returns false otherwise.
+     * @param charToConvert 要转换的字符。
+     *                      The character to convert.
+     * @return 被转换的字符。
+     *         The character converted.
+     * @author Guoqing Lu
+     * @since version 0.0
      */
     public static boolean YNtoBoolean(char charToConvert) {
         return ((charToConvert == 'y') || (charToConvert == 'Y'));
     }
 
-
     /**
-     * This method returns true if the numberToCheck is between min and max (both inclusive)
+     * 判断一个数字是否在给定的范围内。
+     * Checks if a number is within a given range.
      *
-     * @param numberToCheck The number whose range is being checked.
-     * @param min The minimum range number to check against (inclusive)
-     * @param max The maximum range number to check against (inclusive)
-     * @return Returns true if the numberToCheck is between min and max (both inclusive), false otherwise.
+     * @param numberToCheck 要判断的数字。
+     *                      The number to check.
+     * @param min 范围下限。
+     *            The minimum value of the range.
+     * @param max 范围上限。
+     *            The maximum value of the range.
+     * @return 判断的结果
+     *         The validation result.
+     * @author Guoqing Lu
+     * @since version 0.0
      */
     public static boolean validRange(int numberToCheck, int min, int max) {
         return ((numberToCheck >= min) && (numberToCheck <= max));
     }
 
+    /**
+     * 判断一个数字是否在给定的范围内。
+     * Checks if a number is within a given range.
+     *
+     * @param numberToCheck 要判断的数字。
+     *                      The number to check.
+     * @param min 范围下限。
+     *            The minimum value of the range.
+     * @param max 范围上限。
+     *            The maximum value of the range.
+     * @return 判断的结果
+     *         The validation result.
+     * @author Guoqing Lu
+     * @since version 0.0
+     */
     public static boolean validRange(double numberToCheck, double min, double max) {
         return ((numberToCheck >= min) && (numberToCheck <= max));
     }
 
+    /**
+     * 判断一个数字是否在给定的范围内。
+     * Checks if a number is within a given range.
+     *
+     * @param numbertoCheck 要判断的数字。
+     *                      The number to check.
+     * @param min 范围下限。
+     *            The minimum value of the range.
+     * @param max 范围上限。
+     *            The maximum value of the range.
+     * @param delta 允许的误差范围。
+     *              The allowed range of error.
+     * @return 判断的结果
+     *         The validation result.
+     * @author Guoqing Lu
+     * @since version 0.0
+     */
     public static boolean validRange(float numbertoCheck, float min, float max, float delta) {
         return ((numbertoCheck >= (min-delta)) && (numbertoCheck <= (max+delta)));
     }
 
+    /**
+     * 判断一个字符串的长度是否在给定的范围内。
+     * Checks if a string's length is within a given range.
+     *
+     * @param stringToTruncate 要判断的字符串。
+     *                         The string to check.
+     * @param length 最大长度。
+     *               The maximum length.
+     * @return 判断的结果
+     *         The validation result.
+     * @author Guoqing Lu
+     * @since version 0.0
+     */
     public static String truncateString(String stringToTruncate, int length) {
         if (stringToTruncate != null) {
             if (stringToTruncate.length() <= length) {
@@ -75,6 +141,19 @@ public class Utilities {
         }
     }
 
+    /**
+     * 判断一个字符串的长度是否在给定的范围内。
+     * Checks if a string's length is within a given range.
+     *
+     * @param strToCheck 要判断的字符串。
+     *                   The string to check.
+     * @param maxLength 最大长度。
+     *                  The maximum length.
+     * @return 判断的结果
+     *         The validation result.
+     * @author Guoqing Lu
+     * @since version 0.0
+     */
     public static boolean validStringLength(String strToCheck, int maxLength){
         if (strToCheck != null ){
             return strToCheck.length() <= maxLength;
@@ -82,7 +161,24 @@ public class Utilities {
         return false;
     }
 
+    /**
+     * 判断一个索引是否在给定的范围内。
+     * Checks if an index is within a given range.
+     *
+     * @param list 要判断的列表。
+     *             The list to check.
+     * @param indexToCheck 要判断的索引。
+     *                     The index to check.
+     * @return 判断的结果
+     *         The validation result.
+     * @author Guoqing Lu
+     * @since version 0.0
+     */
     public static boolean isValidIndex(List list, int indexToCheck){
         return ((indexToCheck >= 0) && (indexToCheck < list.size()));
     }
 }
+/*
+ * End of utils.Utilities Class.
+ * Checked by Fan Xinkang on 2025/04/17.
+ */

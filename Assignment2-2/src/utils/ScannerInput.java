@@ -3,26 +3,25 @@ package utils;
 import java.util.Scanner;
 
 /**
- * This class provides methods for the robust handling of I/O using Scanner.
- * It creates a new Scanner object for each read from the user, thereby
- * eliminating the Scanner bug (where the buffers don't flush correctly after an int read).
+ * 此类用于读取用户输入。
+ * This class is used to read user input.
  *
- * The methods also parse the numeric data entered to ensure it is correct. If it isn't correct,
- * the user is prompted to enter it again.
- *
- * @author Siobhan Drohan, Mairead Meagher
+ * @author Guoqing Lu
  * @version 1.0
- *
+ * @since version 0.0
  */
-
 public class ScannerInput {
 
     /**
-     * Read an int from the user.  If the entered data isn't actually an int,
-     * the user is prompted again to enter the int.
+     * 读取一个整数。
+     * Read an integer.
      *
-     * @param prompt  The information printed to the console for the user to read
-     * @return The number read from the user and verified as an int.
+     * @param prompt 提示信息。
+     *               prompt The information printed to the console for the user to read.
+     * @return 用户输入的整数。
+     *         The integer value read from the user.
+     * @author Guoqing Lu
+     * @since version 0.0
      */
     public static int readNextInt(String prompt) {
         do {
@@ -38,11 +37,15 @@ public class ScannerInput {
     }
 
     /**
-     * Read a double from the user.  If the entered data isn't actually a double,
-     * the user is prompted again to enter the double.
+     * 读取一个双精度浮点值。
+     * Read a double value.
      *
-     * @param prompt  The information printed to the console for the user to read
-     * @return The number read from the user and verified as a double.
+     * @param prompt 提示信息。
+     *               prompt The information printed to the console for the user to read.
+     * @return 用户输入的双精度浮点值。
+     *         The double value read from the user.
+     * @author Guoqing Lu
+     * @since version 0.0
      */
     public static double readNextDouble(String prompt) {
         do {
@@ -50,18 +53,22 @@ public class ScannerInput {
             try{
                 System.out.print(prompt);
                 return Double.parseDouble(scanner.next());
-            }
-            catch (NumberFormatException e) {
+            } catch (NumberFormatException e) {
                 System.err.println("\tEnter a number please.");
             }
-        }  while (true);
+        } while (true);
     }
+
     /**
-     * Read a float from the user.  If the entered data isn't actually a float,
-     * the user is prompted again to enter the float.
+     * 读取一个单精度浮点值。
+     * Read a float value.
      *
-     * @param prompt  The information printed to the console for the user to read
-     * @return The number read from the user and verified as a double.
+     * @param prompt 提示信息。
+     *               prompt The information printed to the console for the user to read.
+     * @return 用户输入的单精度浮点值。
+     *         The float value read from the user.
+     * @author Guoqing Lu
+     * @since version 0.0
      */
     public static float readNextFloat(String prompt) {
         do {
@@ -77,10 +84,15 @@ public class ScannerInput {
     }
 
     /**
-     * Read a line of text from the user.  There is no validation done on the entered data.
+     * 读取一个字符串。
+     * Read a string.
      *
-     * @param prompt  The information printed to the console for the user to read
-     * @return The String read from the user.
+     * @param prompt 提示信息。
+     *               prompt The information.
+     * @return 用户输入的字符串。
+     *         The string read from the user.
+     * @author Guoqing Lu
+     * @since version 0.0
      */
     public static String readNextLine(String prompt) {
         Scanner input = new Scanner(System.in);

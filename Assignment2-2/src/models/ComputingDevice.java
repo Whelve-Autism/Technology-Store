@@ -52,14 +52,10 @@ public abstract class ComputingDevice extends Technology {
 
     public void setProcessor(String processor) {
         if (!processorSet) {
-            if (processor.length() <= 20) {
-                this.processor = processor;
-            } else {
-                this.processor = processor.substring(0, 20);
-            }
+            Utilities.truncateString(processor, 20);
             processorSet = true;
         } else {
-            if (processor.length() <= 20) {
+            if (Utilities.validStringLength(processor, 20)) {
                 this.processor = processor;
             }
         }
