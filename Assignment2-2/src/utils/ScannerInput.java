@@ -89,15 +89,52 @@ public class ScannerInput {
     }
 
     /**
-     * Read a single character of text from the user.  There is no validation done on the entered data.
+     * 读取一个字符。
+     * Read a character.
      *
-     * @param prompt  The information printed to the console for the user to read
-     * @return The char read from the user.
+     * @param prompt 提示信息。
+     *               prompt The information printed to the console for the user to read.
+     * @return 用户输入的字符。
+     *         The character read from the user.
+     * @author Guoqing Lu, Fan Xinkang
+     * @since version 1.0
      */
     public static char readNextChar(String prompt) {
         Scanner input = new Scanner(System.in);
-        System.out.print(prompt);
-        return input.next().charAt(0);
+        while (true) {
+            System.out.print(prompt);
+            String userInput = input.next();
+            if (userInput.length() == 1) {
+                return userInput.charAt(0);
+            } else {
+                System.err.println("\tPlease enter a single character.");
+            }
+        }
     }
 
+    /**
+     * 读取一个布尔值。
+     * Read a boolean value.
+     *
+     * @param prompt 提示信息。
+     *               prompt The information printed to the console for the user to read.
+     * @return 用户输入的布尔值。
+     *         The boolean value read from the user.
+     * @author Guoqing Lu, Fan Xinkang
+     * @since version 1.0
+     */
+    public static boolean readNextBoolean(String prompt) {
+        while (true) {
+            char input = readNextChar(String.valueOf(prompt));
+            if (input == 'y' || input == 'n') {
+                return input == 'y';
+            } else {
+                System.out.println("Invalid input, please enter y or n.");
+            }
+        }
+    }
 }
+/*
+ * End of utils.ScannerInput Class.
+ * Checked by Fan Xinkang on 2025/04/17.
+ */
