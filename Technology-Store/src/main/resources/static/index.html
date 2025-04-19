@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Technology Store</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body>
+<div id="app">
+  <h1>Technology Store</h1>
+  <div id="add-technology">
+    <h2>Add Technology</h2>
+    <form id="add-form">
+      <label for="type">Type:</label>
+      <select id="type" required>
+        <option value="">Select Type</option>
+        <option value="Laptop">Laptop</option>
+        <option value="Tablet">Tablet</option>
+        <option value="SmartBand">SmartBand</option>
+        <option value="SmartWatch">SmartWatch</option>
+      </select>
+      <div id="form-fields"></div>
+      <button type="submit">Add</button>
+    </form>
+    <p id="add-message"></p>
+  </div>
+  <div id="technology-list">
+    <h2>Technology List</h2>
+    <button id="refresh-button">Refresh List</button>
+    <p id="refresh-time"></p>
+    <table>
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Manufacturer</th>
+        <th>Location</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody id="technology-table">
+      </tbody>
+    </table>
+  </div>
+  <div id="technology-detail" style="display: none;">
+    <h2>Technology Detail</h2>
+    <p>ID: <span id="detail-id"></span></p>
+    <p>Name: <span id="detail-name"></span></p>
+    <p>Manufacturer: <span id="detail-manufacturer"></span></p>
+    <p>Location: <span id="detail-location"></span></p>
+    <div id="detail-fields"></div>
+    <button id="back-to-list">Back to List</button>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
