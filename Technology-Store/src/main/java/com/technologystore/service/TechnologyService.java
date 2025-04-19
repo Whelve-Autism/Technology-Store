@@ -1,6 +1,6 @@
 package com.technologystore.service;
 
-import com.technologystore.model.Technology;
+import com.technologystore.model.*;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
