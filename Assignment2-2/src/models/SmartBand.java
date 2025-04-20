@@ -1,11 +1,13 @@
 package models;
 
+import utils.Utilities;
+
 /**
  * 此类用于创建 SmartBand 对象。
  * This class is used to create SmartBand objects.
  *
  * @author Fan Xinkang
- * @version 1.0
+ * @version 4.2
  * @since version 1.0
  */
 public class SmartBand extends WearableDevice {
@@ -91,7 +93,7 @@ public class SmartBand extends WearableDevice {
      */
     @Override
     public double getInsurancePremium() {
-        return getPrice() * 0.07;
+        return Utilities.toTwoDecimalPlaces(getPrice() * 0.07);
     }
 
     /**

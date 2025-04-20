@@ -1,13 +1,14 @@
 package models;
 
 import utils.DisplayTypeUtility;
+import utils.Utilities;
 
 /**
  * 此类用于创建 SmartWatch 对象。
  * This class is used to create SmartWatch objects.
  *
  * @author Fan Xinkang
- * @version 1.0
+ * @version 4.2
  * @since version 1.0
  */
 public class SmartWatch extends WearableDevice {
@@ -80,7 +81,7 @@ public class SmartWatch extends WearableDevice {
      */
     @Override
     public double getInsurancePremium() {
-        return getPrice() * 0.06;
+        return Utilities.toTwoDecimalPlaces(getPrice() * 0.06);
     }
 
     /**

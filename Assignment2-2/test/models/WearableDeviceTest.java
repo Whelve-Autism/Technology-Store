@@ -270,7 +270,7 @@ public class WearableDeviceTest {
             Material: 0123456789012345678, Size: 012345678
             Includes Heart Rate Monitor.
             Connects to the internet via Companion App.
-            Insurance Premium: $1.4700000000000002
+            Insurance Premium: $1.47
             """;
         assertEquals(expected, validSmartBand.toString());
 
@@ -279,7 +279,7 @@ public class WearableDeviceTest {
             Material: 01234567890123456789, Size: 0123456789
             Includes Heart Rate Monitor.
             Connects to the internet via Companion App.
-            Insurance Premium: $1.4000000000000001
+            Insurance Premium: $1.4
             """;
         assertEquals(expected, edgeCaseSmartBand.toString());
 
@@ -288,7 +288,7 @@ public class WearableDeviceTest {
             Material: 01234567890123456789, Size: 0123456789
             No Heart Rate Monitor included.
             Connects to the internet via Companion App.
-            Insurance Premium: $1.4000000000000001
+            Insurance Premium: $1.4
             """;
         assertEquals(expected, invalidSmartBand.toString());
 

@@ -97,7 +97,7 @@ public class ManufacturerAPI  implements ISerializer {
      */
     public Manufacturer getManufacturerByName (String manName){
         int index = retrieveManufacturerIndex(manName);
-        if (index != -1){
+        if (index != -1) {
             return manufacturers.get(index);
         }
         return null;
@@ -112,12 +112,12 @@ public class ManufacturerAPI  implements ISerializer {
      * @author Guoqing Lu
      * @since version 0.0
      */
-    public String listManufacturers(){
+    public String listManufacturers() {
         StringBuilder listManufacturers = new StringBuilder();
-        for (Manufacturer manufacturer : manufacturers){
+        for (Manufacturer manufacturer : manufacturers) {
             listManufacturers.append(manufacturers.indexOf(manufacturer)).append(": ").append(manufacturer).append("\n");
         }
-        if (listManufacturers.toString().isEmpty()){
+        if (listManufacturers.toString().isEmpty()) {
             return "No manufacturers";
         }
         else {
@@ -249,13 +249,14 @@ public class ManufacturerAPI  implements ISerializer {
      *                         Manufacturer name.
      * @return 索引。
      *         The index.
-     * @author Guoqing Lu
-     * @since version 0.0
+     * @author Guoqing Lu, Fan Xinkang
+     * @since version 4.2
      */
-    public int retrieveManufacturerIndex(String manufacturerName){
-        for (Manufacturer manufacturer : manufacturers){
-            if (isValidManufacturer(manufacturerName)){
-                return manufacturers.indexOf(manufacturer);
+    public int retrieveManufacturerIndex(String manufacturerName) {
+        for (int i = 0; i < manufacturers.size(); i++) {
+            Manufacturer manufacturer = manufacturers.get(i);
+            if (manufacturer.getManufacturerName().equalsIgnoreCase(manufacturerName)) {
+                return i;
             }
         }
         return -1;
@@ -326,5 +327,5 @@ public class ManufacturerAPI  implements ISerializer {
 }
 /*
  * End of controllers.ManufacturerAPI Class.
- * Checked by Fan Xinkang on 2025/04/16.
+ * Checked by Fan Xinkang on 2025/04/20.
  */

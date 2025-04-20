@@ -129,7 +129,7 @@ public class TabletTest {
                 Storage: 64GB, Processor: Snapdragon 865
                 Operating System: Android
                 Connects to the internet via Wi-Fi
-                Insurance Premium: $7.9999
+                Insurance Premium: $7.99
                 """;
         assertTrue( validTablet.toString().contains(expected));
         expected = """

@@ -15,7 +15,7 @@ import java.io.IOException;
  * This class is used to start the application and initialize the required resources.
  *
  * @author Guoqing Lu, Fan Xinkang
- * @version 4.0
+ * @version 4.3
  * @since version 0.0
  */
 public class Driver {
@@ -46,8 +46,6 @@ public class Driver {
      * 启动应用程序，初始化应用程序所需的资源。
      * This method is used to start the application and initialize the required resources.
      *
-     * @throws Exception 抛出异常。
-     *                   The exception thrown.
      * @author Guoqing Lu, Fan Xinkang
      * @since version 0.0
      */
@@ -56,7 +54,7 @@ public class Driver {
         File techFile = new File("technologyDevices.xml");
 
         if (!techFile.exists()) {
-            System.err.println("Error: techDevices.xml not found in the current directory.");
+            System.err.println("Error: technologyDevices.xml not found in the current directory.");
             return;
         }
 
@@ -65,9 +63,9 @@ public class Driver {
         try {
             techAPI.load();
         } catch (FileNotFoundException e) {
-            System.err.println("techDevices.xml not found. Please ensure the file exists in the current directory.");
+            System.err.println("technologyDevices.xml not found. Please ensure the file exists in the current directory.");
         } catch (IOException e) {
-            System.err.println(STR."Error in loading techDevices.xml: \{e.getMessage()}");
+            System.err.println(STR."Error in loading technologyDevices.xml: \{e.getMessage()}");
         } catch (Exception e) {
             System.err.println(STR."Unexpected error: \{e.getMessage()}");
             throw new RuntimeException(e);
@@ -163,8 +161,6 @@ public class Driver {
      * 退出应用程序，保存应用程序所需的资源。
      * This method is used to exit the application and save the required resources.
      *
-     * @throws Exception 抛出异常。
-     *                   The exception thrown.
      * @author Guoqing Lu, Fan Xinkang
      * @since version 0.0
      */
@@ -420,17 +416,16 @@ public class Driver {
                     System.out.println("Invalid option entered.");
                     break;
             }
+            if (technology != null && techAPI.addTechnologyDevice(technology)) {
+                System.out.println("Add successful");
+            } else {
+                System.out.println("Add not successful");
+            }
             ScannerInput.readNextLine("\nPress the enter key to continue");
             System.out.println("Select the type of computing device:");
             System.out.println("1) Tablet");
             System.out.println("0) Back to the previous level of directory.");
             computingChoice = ScannerInput.readNextInt("Select the type of computing device:");
-        }
-
-        if (technology != null && techAPI.addTechnologyDevice(technology)) {
-            System.out.println("Add successful");
-        } else {
-            System.out.println("Add not successful");
         }
         addTechnologyDevice();
     }
@@ -462,18 +457,17 @@ public class Driver {
                     System.out.println("Invalid option entered.");
                     break;
             }
+            if (technology != null && techAPI.addTechnologyDevice(technology)) {
+                System.out.println("Add successful");
+            } else {
+                System.out.println("Add not successful");
+            }
             ScannerInput.readNextLine("\nPress the enter key to continue");
             System.out.println("Select the type of wearable device:");
             System.out.println("1) SmartBand");
             System.out.println("2) SmartWatch");
             System.out.println("0) Back to the previous level of directory.");
             wearableChoice = ScannerInput.readNextInt("Select the type of wearable device:");
-        }
-
-        if (technology != null && techAPI.addTechnologyDevice(technology)) {
-            System.out.println("Add successful");
-        } else {
-            System.out.println("Add not successful");
         }
         addTechnologyDevice();
     }
@@ -548,10 +542,17 @@ public class Driver {
         String manufacturerName = ScannerInput.readNextLine("Please enter the manufacturer name: ");
         String id = ScannerInput.readNextLine("Please enter the id: ");
         Manufacturer manufacturer = manufacturerAPI.getManufacturerByName(manufacturerName);
+
         if (manufacturer == null) {
             System.out.println("Invalid manufacturer name.");
             return null;
         }
+
+        if (!isValidId(id)) {
+            System.out.println("Invalid id.");
+            return null;
+        }
+
         return new TechnologyInput(modelName, price, manufacturer, id);
     }
 
@@ -598,14 +599,59 @@ public class Driver {
      * This method updates a technology device.
      *
      * @author Fan Xinkang
-     * @since version 4.0
+     * @since version 4.2
      */
     private void updateTechnologyDevice() {
         System.out.println(techAPI.getTechnologyList());
         int index = ScannerInput.readNextInt("Please enter the index of the technology device to update: ");
-        if (techAPI.updateTablet(techAPI.getTechnologyByIndex(index).getId(), addTablet()) ||
-                techAPI.updateSmartWatch(techAPI.getTechnologyByIndex(index).getId(), addSmartWatch()) ||
-                techAPI.updateSmartBand(techAPI.getTechnologyByIndex(index).getId(), addSmartBand())) {
+        Technology deviceToUpdate = techAPI.getTechnologyByIndex(index);
+
+        if (deviceToUpdate == null) {
+            System.out.println("Invalid index. Update not successful.");
+            return;
+        }
+
+        TechnologyInput newInput = getTechnologyInputInformation();
+        if (newInput == null) {
+            System.out.println("Update not successful.");
+            return;
+        }
+
+        String newId = newInput.id.toLowerCase();
+
+        if (!newId.equals(deviceToUpdate.getId().toLowerCase()) && techAPI.getTechnologyDeviceById(newId) != null) {
+            System.out.println("ID already exists. Please enter a unique ID.");
+            return;
+        }
+
+        boolean updateSuccessful = false;
+        switch (deviceToUpdate) {
+            case Tablet tablet -> updateSuccessful = techAPI.updateTablet(deviceToUpdate.getId(), new Tablet(
+                    newInput.modelName, newInput.price, newInput.manufacturer, newId,
+                    ScannerInput.readNextLine("Please enter the processor: "),
+                    ScannerInput.readNextInt("Please enter the storage (GB): "),
+                    ScannerInput.readNextLine("Please enter the operating system: ")
+            ));
+            case SmartWatch smartWatch ->
+                    updateSuccessful = techAPI.updateSmartWatch(deviceToUpdate.getId(), new SmartWatch(
+                            newInput.modelName, newInput.price, newInput.manufacturer, newId,
+                            ScannerInput.readNextLine("Please enter the material: "),
+                            ScannerInput.readNextLine("Please enter the size: "),
+                            ScannerInput.readNextLine("Please enter the display type: ")
+                    ));
+            case SmartBand smartBand ->
+                    updateSuccessful = techAPI.updateSmartBand(deviceToUpdate.getId(), new SmartBand(
+                            newInput.modelName, newInput.price, newInput.manufacturer, newId,
+                            ScannerInput.readNextLine("Please enter the material: "),
+                            ScannerInput.readNextLine("Please enter the size: "),
+                            ScannerInput.readNextBoolean("Does it include a heart rate monitor? (y/n): ")
+                    ));
+            default -> {
+                System.out.println("Invalid technology device type.");
+            }
+        }
+
+        if (updateSuccessful) {
             System.out.println("Update successful");
         } else {
             System.out.println("Update not successful");
@@ -634,7 +680,7 @@ public class Driver {
             ScannerInput.readNextLine("\n Press the enter key to continue");
             option = reportsMenu();
         }
-        mainMenu();
+        runMainMenu();
     }
 
     /**
@@ -667,7 +713,7 @@ public class Driver {
                | 1) List Manufacturers                              |
                | 2) List Manufacturers from a given manufacturer    |
                | 3) List Manufacturers by a given name              |
-               | 0) Return to main menu                             |
+               | 0) Return to Reports Menu                          |
                  ---------------------------------------------------""");
         return ScannerInput.readNextInt("==>>");
     }
@@ -702,7 +748,7 @@ public class Driver {
             ScannerInput.readNextLine("\n Press the enter key to continue");
             option =  manufacturerReportsMenu();
         }
-        mainMenu();
+        runReportsMenu();
     }
 
     /**
@@ -714,16 +760,16 @@ public class Driver {
      */
     private int technologyReportsMenu() {
         System.out.println("""
-                ------------- Technology Reports Menu  --------------
-                | 1) List all technology                            |
-                | 2) List all SmartBands                            |
-                | 3) List all Smart Watch                           |
-                | 4) List all Tablets                               |
-                | 5) List all devices above a price                 |
-                | 6) List all devices below a price                 |
-                | 7) List all tablets by operating system           |
-                | 0) Return to main menu                            |
-                -----------------------------------------------------
+        ------------- Technology Reports Menu  --------------
+        | 1) List all technology                            |
+        | 2) List all SmartBands                            |
+        | 3) List all Smart Watch                           |
+        | 4) List all Tablets                               |
+        | 5) List all devices above a price                 |
+        | 6) List all devices below a price                 |
+        | 7) List all tablets by operating system           |
+        | 0) Return to Reports Menu                         |
+        -----------------------------------------------------
         """);
         return ScannerInput.readNextInt("==>>");
     }
@@ -759,7 +805,7 @@ public class Driver {
             ScannerInput.readNextLine("\n Press the enter key to continue");
             option = technologyReportsMenu();
         }
-        reportsMenu();
+        runReportsMenu();
     }
 
     /**
@@ -777,8 +823,24 @@ public class Driver {
             return null;
         }
     }
+
+    /**
+     * 验证ID是否有效。
+     * This method validates the ID.
+     *
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
+    private boolean isValidId(String idToValidate) {
+        for (Technology techDev : techAPI.getTechnologyList()) {
+            if (techDev.getId().equalsIgnoreCase(idToValidate)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
 /*
  * End of main.Driver Class.
- * Checked by Fan Xinkang on 2025/04/18.
+ * Checked by Fan Xinkang on 2025/04/20.
  */

@@ -1,13 +1,14 @@
 package models;
 
 import utils.OperatingSystemUtility;
+import utils.Utilities;
 
 /**
  * 此类用于创建 Tablet 对象。
  * This class is used to create Tablet objects.
  *
  * @author Fan Xinkang
- * @version 1.0
+ * @version 4.2
  * @since version 1.0
  */
 public class Tablet extends ComputingDevice {
@@ -89,7 +90,7 @@ public class Tablet extends ComputingDevice {
      */
     @Override
     public double getInsurancePremium() {
-        return getPrice() * 0.01;
+        return Utilities.toTwoDecimalPlaces(getPrice() * 0.01);
     }
 
     /**
