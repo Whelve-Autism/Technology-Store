@@ -79,4 +79,67 @@ class TechnologyServiceTest {
         Optional<Technology> foundTechnology = technologyService.getTechnologyById(1);
         assertFalse(foundTechnology.isPresent());
     }
+
+    @Test
+    public void testUpdateNonExistentTechnology() {
+        Manufacturer manufacturer = new Manufacturer("Manufacturer1", "Location1");
+        Technology technology = new Technology("Tech1", 1, manufacturer);
+
+        boolean isUpdated = technologyService.updateTechnology(technology);
+        assertFalse(isUpdated);
+    }
+
+    @Test
+    public void testDeleteNonExistentTechnology() {
+        boolean isDeleted = technologyService.deleteTechnology(1);
+        assertFalse(isDeleted);
+    }
+
+    @Test
+    public void testAddMultipleTechnologies() {
+        Manufacturer manufacturer1 = new Manufacturer("Manufacturer1", "Location1");
+        Technology technology1 = new Technology("Tech1", 1, manufacturer1);
+        technologyService.addTechnology(technology1);
+
+        Manufacturer manufacturer2 = new Manufacturer("Manufacturer2", "Location2");
+        Technology technology2 = new Technology("Tech2", 2, manufacturer2);
+        technologyService.addTechnology(technology2);
+
+        List<Technology> technologies = technologyService.getTechnologyList();
+        assertEquals(2, technologies.size());
+        assertEquals("Tech1", technologies.get(0).getName());
+        assertEquals("Tech2", technologies.get(1).getName());
+    }
+
+    @Test
+    public void testAddTechnologyWithNullManufacturer() {
+        Technology technology = new Technology("Tech1", 1, null);
+        technologyService.addTechnology(technology);
+
+        List<Technology> technologies = technologyService.getTechnologyList();
+        assertEquals(1, technologies.size());
+        assertNull(technologies.getFirst().getManufacturer());
+    }
+
+    @Test
+    public void testAddTechnologyWithNullName() {
+        Manufacturer manufacturer = new Manufacturer("Manufacturer1", "Location1");
+        Technology technology = new Technology(null, 1, manufacturer);
+        technologyService.addTechnology(technology);
+
+        List<Technology> technologies = technologyService.getTechnologyList();
+        assertEquals(1, technologies.size());
+        assertNull(technologies.getFirst().getName());
+    }
+
+    @Test
+    public void testAddTechnologyWithNegativeId() {
+        Manufacturer manufacturer = new Manufacturer("Manufacturer1", "Location1");
+        Technology technology = new Technology("Tech1", -1, manufacturer);
+        technologyService.addTechnology(technology);
+
+        List<Technology> technologies = technologyService.getTechnologyList();
+        assertEquals(1, technologies.size());
+        assertEquals(-1, technologies.getFirst().getId());
+    }
 }
