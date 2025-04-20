@@ -1,6 +1,7 @@
 package com.technologystore.model;
 
 public class ComputingDevice extends Technology {
+
     private String displaySize;
 
     public ComputingDevice() {

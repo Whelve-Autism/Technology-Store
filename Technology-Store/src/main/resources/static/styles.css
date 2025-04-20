@@ -114,7 +114,10 @@ tr:hover {
     animation-duration: 0.5s;
 }
 
-/* 加载动画 */
+/*
+  加载动画，用于在页面加载时显示加载动画。
+  Loading animation, used to display a loading animation when the page is loading.
+ */
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
@@ -134,7 +137,10 @@ tr:hover {
     animation: spin 1s linear infinite;
 }
 
-/* 过渡动画 */
+/*
+  过渡动画，用于在页面加载时显示加载动画，并在页面加载完成后进行淡入动画。
+  Transition animation, used to display a loading animation when the page is loading and perform a fade-in animation after the page loading is completed.
+ */
 .fade-in {
     opacity: 0;
     animation: fadeIn 0.5s forwards;
@@ -146,7 +152,10 @@ tr:hover {
     }
 }
 
-/* 响应式设计 */
+/*
+  响应式设计，当屏幕宽度小于768px时，将页面布局调整为列式布局，以适应较小的屏幕。
+  Responsive design, when the screen width is less than 768px, the page layout is adjusted to column layout to fit smaller screens.
+ */
 @media (max-width: 768px) {
     #app {
         padding: 10px;
@@ -159,7 +168,10 @@ tr:hover {
     }
 }
 
-/* 搜索和刷新按钮布局优化 */
+/*
+  搜索和刷新按钮布局优化，使其垂直居中并保持间距，以适应较小的屏幕。
+  Search and refresh button layout optimization, ensuring vertical alignment and spacing, to accommodate smaller screens.
+ */
 .search-refresh-container {
     display: flex;
     align-items: center;

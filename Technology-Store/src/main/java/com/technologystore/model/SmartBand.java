@@ -1,6 +1,7 @@
 package com.technologystore.model;
 
 public class SmartBand extends WearableDevice {
+
     private int batteryCapacity;
 
     public SmartBand(String name, int id, Manufacturer manufacturer, String measurement, int batteryCapacity) {

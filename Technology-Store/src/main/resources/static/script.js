@@ -2,7 +2,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const apiUrl = 'http://localhost:8080/technology';
     let technologies = [];
 
-    // 动态生成表单字段
+    /*
+      监听设备类型选择，根据选择更新表单字段。
+      Monitoring device type selection and updating form fields according to the selection.
+     */
     document.getElementById('type').addEventListener('change', () => {
         const type = document.getElementById('type').value;
         const formFields = document.getElementById('form-fields');
@@ -53,7 +56,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 添加新科技设备
+    /*
+      监听添加表单提交，发送 POST 请求到服务器。
+      Monitor form submission of adding and send a POST request to the server.
+     */
     document.getElementById('add-form').addEventListener('submit', async (e) => {
         e.preventDefault();
         const type = document.getElementById('type').value;
@@ -68,7 +74,10 @@ document.addEventListener('DOMContentLoaded', () => {
             manufacturer: { name: manufacturerName, location }
         };
 
-        // 检查 ID 是否已经存在
+        /*
+          检查 ID 是否已经存在，如果存在则显示错误消息。
+          Check if the ID already exists, if it does, display an error message.
+         */
         if (technologies.some(tech => tech.id === id)) {
             document.getElementById('add-message').textContent = 'ID already exists. Please enter a unique ID.';
             document.getElementById('add-message').className = 'animate__animated animate__fadeIn';
@@ -94,7 +103,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 break;
         }
 
-        console.log('Adding Technology:', data); // 调试信息
+        /*
+          打印要发送的数据，用于调试。
+          Print the data to be sent for debugging purposes.
+         */
+        console.log('Adding Technology:', data);
 
         try {
             const response = await fetch(apiUrl, {
@@ -106,13 +119,11 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (response.ok) {
-                const message = 'Technology added successfully';
-                document.getElementById('add-message').textContent = message;
+                document.getElementById('add-message').textContent = 'Technology added successfully';
                 document.getElementById('add-message').className = 'success animate__animated animate__fadeIn';
-                loadTechnologyList(); // 刷新页面以显示最新列表
+                await loadTechnologyList();
             } else {
-                const message = `Failed to add technology: ${response.statusText}`;
-                document.getElementById('add-message').textContent = message;
+                document.getElementById('add-message').textContent = `Failed to add technology: ${response.statusText}`;
                 document.getElementById('add-message').className = 'animate__animated animate__fadeIn';
             }
         } catch (error) {
@@ -122,7 +133,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 加载科技设备列表
+    /*
+      加载科技设备列表，并渲染到页面。
+      Load the list of technology devices and render it to the page.
+     */
     async function loadTechnologyList() {
         try {
             const response = await fetch(apiUrl);
@@ -130,9 +144,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error('Network response was not ok');
             }
             technologies = await response.json();
-            console.log('Technologies loaded:', technologies); // 调试信息
+            console.log('Technologies loaded:', technologies);
             renderTechnologyList(technologies);
-            updateRefreshTime(); // 更新刷新时间
+            updateRefreshTime();
         } catch (error) {
             console.error('Error loading technology list:', error);
             document.getElementById('add-message').textContent = 'Failed to load technology list';
@@ -140,7 +154,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 渲染科技设备列表
+    /*
+      渲染科技设备列表到页面。
+      Render the list of technology devices to the page.
+     */
     function renderTechnologyList(technologies) {
         const tableBody = document.getElementById('technology-table');
         tableBody.innerHTML = '';
@@ -159,10 +176,13 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             tableBody.appendChild(row);
         });
-        console.log('Rendered Technologies:', technologies); // 调试信息
+        console.log('Rendered Technologies:', technologies);
     }
 
-    // 更新刷新时间
+    /*
+      更新刷新时间。
+      Update the refresh time.
+     */
     function updateRefreshTime() {
         const now = new Date();
         const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
@@ -170,7 +190,10 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('refresh-time').textContent = `Last Refreshed: ${formattedTime}`;
     }
 
-    // 展示科技设备详情
+    /*
+      显示科技设备的详细信息。
+      Show the details of a technology device.
+     */
     window.viewTechnology = async (id) => {
         const response = await fetch(`${apiUrl}/${id}`);
         const technology = await response.json();
@@ -204,13 +227,19 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('technology-detail').style.display = 'block';
     };
 
-    // 返回到列表
+    /*
+      返回到列表。
+      Back to list.
+     */
     document.getElementById('back-to-list').addEventListener('click', () => {
         document.getElementById('technology-list').style.display = 'block';
         document.getElementById('technology-detail').style.display = 'none';
     });
 
-    // 更新科技设备
+    /*
+      更新科技设备。
+      Update a technology device.
+     */
     window.updateTechnology = async (id) => {
         const type = prompt('Enter type (Laptop, Tablet, SmartBand, SmartWatch):');
         const name = prompt('Enter new name:');
@@ -250,7 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 break;
         }
 
-        console.log('Updating Technology:', data); // 调试信息
+        console.log('Updating Technology:', data);
 
         const response = await fetch(`${apiUrl}/${id}`, {
             method: 'PUT',
@@ -264,7 +293,10 @@ document.addEventListener('DOMContentLoaded', () => {
         await loadTechnologyList();
     };
 
-    // 删除科技设备
+    /*
+      删除科技设备。
+      Delete a technology device.
+     */
     window.deleteTechnology = async (id) => {
         if (confirm('Are you sure you want to delete this technology?')) {
             const response = await fetch(`${apiUrl}/${id}`, {
@@ -276,19 +308,32 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // 刷新科技设备列表
+    /*
+      刷新科技设备列表。
+      Refresh the technology list.
+     */
     document.getElementById('refresh-button').addEventListener('click', () => {
         loadTechnologyList().then(() => console.log('Technology list refreshed'));
     });
 
-    // 搜索科技设备
+    /*
+      搜索科技设备。
+      Search for technology devices.
+     */
     document.getElementById('search-button').addEventListener('click', () => {
         const query = document.getElementById('search').value.toLowerCase();
         const filteredTechnologies = technologies.filter(tech => {
-            // 添加调试信息
+
+            /*
+              添加日志记录以检查tech对象。
+              Logging added to check the tech object.
+             */
             console.log('Tech object:', tech);
 
-            // 添加空值检查
+            /*
+              添加日志记录以检查tech对象的各个属性，不区分大小写。
+              Logging added to check each property of the tech object, ignoring case.
+             */
             const techType = tech.type ? tech.type.toLowerCase() : '';
             const techName = tech.name ? tech.name.toLowerCase() : '';
             const techManufacturerName = tech.manufacturer && tech.manufacturer.name ? tech.manufacturer.name.toLowerCase() : '';
@@ -299,6 +344,9 @@ document.addEventListener('DOMContentLoaded', () => {
         renderTechnologyList(filteredTechnologies);
     });
 
-    // 初始化页面
+    /*
+      初始化界面，加载科技设备列表。
+      Initialize the interface, load the technology list.
+     */
     loadTechnologyList().then(() => console.log('Technology list loaded'));
 });
