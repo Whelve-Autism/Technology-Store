@@ -340,7 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             return techType.includes(query) || techName.includes(query) || techManufacturerName.includes(query);
         });
-        console.log('Filtered Technologies:', filteredTechnologies); // 调试信息
+        console.log('Filtered Technologies:', filteredTechnologies);
         renderTechnologyList(filteredTechnologies);
     });
 
