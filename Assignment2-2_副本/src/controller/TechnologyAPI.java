@@ -2,10 +2,6 @@ package controller;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
-import controller.computingCRUD.LaptopCRUD;
-import controller.computingCRUD.TabletCRUD;
-import controller.wearableCRUD.SmartBandCRUD;
-import controller.wearableCRUD.SmartWatchCRUD;
 import model.*;
 
 import utils.ScannerInput;
@@ -46,25 +42,23 @@ public class TechnologyAPI {
     }
 
     public static boolean isValidId(String id) {
-        return !technologyList.isEmpty() && technologyList.stream().noneMatch(technology -> technology.getId().equals(id));
-    }
-
-    public int getTechnologyIndexById(String id) {
-        for (int i = 0; i < technologyList.size(); i++) {
-            Technology technology = technologyList.get(i);
-            if (technology.getId().equals(id)) {
-                return i;
-            }
+        if (technologyList == null || technologyList.isEmpty()) {
+            return true;
         }
-        return -1;
+        return technologyList.stream().noneMatch(technology -> technology.getId().equals(id));
     }
 
     public static void deleteAllTechnologies() {
+        if (technologyList == null || technologyList.isEmpty()) {
+            printlnRandomColor("There are no technologies in the list.");
+            return;
+        }
+
         technologyList.clear();
     }
 
     public static void deleteTechnology() {
-        if (technologyList.isEmpty()) {
+        if (technologyList == null || technologyList.isEmpty()) {
             printlnRandomColor("There are no technologies in the list.");
             return;
         }
@@ -81,7 +75,7 @@ public class TechnologyAPI {
 
     public static void updateTechnology() {
         ArrayList<Technology> technologyList = getTechnologyList();
-        if (technologyList.isEmpty()) {
+        if (technologyList == null || technologyList.isEmpty()) {
             printlnRandomColor("No technologies found.");
             return;
         }
@@ -99,11 +93,16 @@ public class TechnologyAPI {
             case Tablet tablet -> updateTablet();
             case SmartBand smartBand -> updateSmartBand();
             case SmartWatch smartWatch -> updateSmartWatch();
-            case null, default -> System.out.println("Unsupported technology type.");
+            case null, default -> printlnRandomColor("Unsupported technology type.");
         }
     }
 
     public static void listAllTechnologies() {
+        if (technologyList == null || technologyList.isEmpty()) {
+            printlnRandomColor("There are no technologies in the list.");
+            return;
+        }
+
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < technologyList.size(); i++) {
             Technology technology = technologyList.get(i);
@@ -113,7 +112,7 @@ public class TechnologyAPI {
     }
 
     public static void listTechnologiesAboveAPrice() {
-        if (technologyList.isEmpty()) {
+        if (technologyList == null || technologyList.isEmpty()) {
             printlnRandomColor("There are no technologies in the list.");
             return;
         }
@@ -128,7 +127,7 @@ public class TechnologyAPI {
     }
 
     public static void listTechnologiesBelowAPrice() {
-        if (technologyList.isEmpty()) {
+        if (technologyList == null || technologyList.isEmpty()) {
             printlnRandomColor("There are no technologies in the list.");
             return;
         }
@@ -140,6 +139,19 @@ public class TechnologyAPI {
             }
         }
         printlnRandomColor(builder.toString());
+    }
+
+    public static void ListTopFiveExpansiveTechnologyDevices() {
+        if (technologyList == null || technologyList.isEmpty()) {
+            printlnRandomColor("There are no technologies in the list.");
+            return;
+        }
+
+        technologyList.sort(Comparator.comparingDouble(Technology::getPrice).reversed());
+        int limit = Math.min(5, technologyList.size());
+        technologyList.subList(0, limit).forEach(technology -> {
+            printlnRandomColor(technology.toString());
+        });
     }
 
     @SuppressWarnings("unchecked")

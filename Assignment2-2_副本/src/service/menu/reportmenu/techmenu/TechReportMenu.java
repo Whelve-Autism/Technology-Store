@@ -25,6 +25,7 @@ public class TechReportMenu {
                 case 5 -> listAllSmartWatches();
                 case 6 -> listTechnologiesAboveAPrice();
                 case 7 -> listTechnologiesBelowAPrice();
+                case 8 -> ListTopFiveExpansiveTechnologyDevices();
                 default -> printlnRandomColor(STR."Invalid option entered\{option}");
             }
             ScannerInput.readNextLine("\n Press the enter key to continue");
@@ -35,19 +36,20 @@ public class TechReportMenu {
 
     private static int technologyReportMenu() {
         return ScannerInput.readNextInt("""
-               * * * * * * * * * * * * * * * * * * * *
-               *       Technology Report Menu        *
-               * * * * * * * * * * * * * * * * * * * *
-               * 1) List all technology              *
-               * 2) List all laptops                 *
-               * 3) List all tablets                 *
-               * 4) List all Smart bands             *
-               * 5) List all Smart watches           *
-               * 6) List all devices above a price   *
-               * 7) List all devices below a price   *
-               * * * * * * * * * * * * * * * * * * * *
-               * 0) Return to Reports Menu           *
-               * * * * * * * * * * * * * * * * * * * *
+               * * * * * * * * * * * * * * * * * * * * * * * *
+               *           Technology Report Menu            *
+               * * * * * * * * * * * * * * * * * * * * * * * *
+               * 1) List all technology                      *
+               * 2) List all laptops                         *
+               * 3) List all tablets                         *
+               * 4) List all Smart bands                     *
+               * 5) List all Smart watches                   *
+               * 6) List all devices above a price           *
+               * 7) List all devices below a price           *
+               * 8) List top 5 expansive technology devices  *
+               * * * * * * * * * * * * * * * * * * * * * * * *
+               * 0) Return to Reports Menu                   *
+               * * * * * * * * * * * * * * * * * * * * * * * *
                """);
     }
 }

@@ -156,7 +156,7 @@ public class ManufacturerAPI {
 
     public static void load() throws Exception {
 
-        Class<?>[] classes = new Class[]{ Manufacturer.class};
+        Class<?>[] classes = new Class[] {Manufacturer.class};
 
         XStream xstream = new XStream(new DomDriver());
         XStream.setupDefaultSecurity(xstream);
