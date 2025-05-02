@@ -1,0 +1,69 @@
+<object-stream>
+  <list>
+    <model.SmartBand>
+      <modelName>smart watch1</modelName>
+      <price>129.99000549316406</price>
+      <manufacturer>
+        <manufacturerName>Samsung</manufacturerName>
+        <numEmployees>1200</numEmployees>
+      </manufacturer>
+      <id>A123</id>
+      <modelNameSet>false</modelNameSet>
+      <priceSet>false</priceSet>
+      <idSet>false</idSet>
+      <material>plastic</material>
+      <size>large</size>
+      <materialSet>false</materialSet>
+      <sizeSet>false</sizeSet>
+      <heartRateMonitor>true</heartRateMonitor>
+    </model.SmartBand>
+    <model.SmartWatch>
+      <modelName>Smart Watch 12</modelName>
+      <price>459.0</price>
+      <manufacturer>
+        <numEmployees>0</numEmployees>
+      </manufacturer>
+      <id>W1234</id>
+      <modelNameSet>true</modelNameSet>
+      <priceSet>true</priceSet>
+      <idSet>true</idSet>
+      <material>plastic</material>
+      <size>large</size>
+      <materialSet>true</materialSet>
+      <sizeSet>true</sizeSet>
+      <displayType>LCD</displayType>
+    </model.SmartWatch>
+    <model.Tablet>
+      <modelName>IPad 123</modelName>
+      <price>678.0</price>
+      <manufacturer>
+        <numEmployees>0</numEmployees>
+      </manufacturer>
+      <id>T1223</id>
+      <modelNameSet>true</modelNameSet>
+      <priceSet>true</priceSet>
+      <idSet>true</idSet>
+      <processor>Android</processor>
+      <storage>64</storage>
+      <processorSet>true</processorSet>
+      <storageSet>true</storageSet>
+      <operatingSystemSet>false</operatingSystemSet>
+    </model.Tablet>
+    <model.SmartWatch>
+      <modelName>HiTech Watch</modelName>
+      <price>67.0</price>
+      <manufacturer>
+        <numEmployees>0</numEmployees>
+      </manufacturer>
+      <id>W3535</id>
+      <modelNameSet>true</modelNameSet>
+      <priceSet>true</priceSet>
+      <idSet>true</idSet>
+      <material>plastic</material>
+      <size>small</size>
+      <materialSet>true</materialSet>
+      <sizeSet>true</sizeSet>
+      <displayType>LCD</displayType>
+    </model.SmartWatch>
+  </list>
+</object-stream>

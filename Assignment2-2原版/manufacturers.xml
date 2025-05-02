@@ -1,0 +1,20 @@
+<object-stream>
+  <list>
+    <model.Manufacturer>
+      <manufacturerName>Samsung</manufacturerName>
+      <numEmployees>1200</numEmployees>
+    </model.Manufacturer>
+    <model.Manufacturer>
+      <manufacturerName>Apple</manufacturerName>
+      <numEmployees>1020</numEmployees>
+    </model.Manufacturer>
+    <model.Manufacturer>
+      <manufacturerName>Hitachi</manufacturerName>
+      <numEmployees>1325</numEmployees>
+    </model.Manufacturer>
+    <model.Manufacturer>
+      <manufacturerName>1</manufacturerName>
+      <numEmployees>1</numEmployees>
+    </model.Manufacturer>
+  </list>
+</object-stream>
