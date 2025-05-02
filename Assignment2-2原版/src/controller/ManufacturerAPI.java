@@ -81,7 +81,7 @@ public class ManufacturerAPI {
             return;
         }
 
-        if (!isValidIndex(manufacturers, index)) {
+        if (!isValidIndex(manufacturers, index - 1)) {
             printlnRandomColor("Index out of range.");
             return;
         }
