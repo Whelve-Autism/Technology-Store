@@ -10,8 +10,23 @@ import static service.menu.manufacturermenu.ManufacturerMenu.runManufacturerMenu
 import static service.menu.reportmenu.ReportMenu.runReportMenu;
 import static service.menu.technologymenu.TechnologyMenu.runTechnologyMenu;
 
+/**
+ * 此类用于管理主菜单。
+ * This class is used to manage the main menu.
+ *
+ * @author Fan Xinkang
+ * @version 4.3
+ * @since version 4.3
+ */
 public class MainMenu {
 
+    /**
+     * 运行主菜单。
+     * Run the main menu.
+     *
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     public static void runMainMenu() {
         randomSleep();
         int option = mainMenu();
@@ -43,6 +58,13 @@ public class MainMenu {
         }
     }
 
+    /**
+     * 展示主菜单。
+     * Show the main menu.
+     *
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     private static int mainMenu() {
         return ScannerInput.readNextInt("""
                * * * * * * * * * * * * * * * * * *
@@ -60,3 +82,7 @@ public class MainMenu {
                ==>""");
     }
 }
+/*
+ * End of MainMenu Class.
+ * Checked by Fan Xinkang on 2025/05/03.
+ */

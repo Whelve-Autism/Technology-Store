@@ -13,8 +13,23 @@ import static controller.TechnologyAPI.technologyList;
 import static model.Tablet.operatingSystems;
 import static service.UserInterface.printlnRandomColor;
 
+/**
+ * 此类用于处理平板相关的 CRUD 操作。
+ * This class is used to handle Tablet related CRUD operations.
+ *
+ * @author Fan Xinkang
+ * @version 4.4
+ * @since version 4.3
+ */
 public class TabletCRUD {
 
+    /**
+     * 添加一个平板。
+     * This method adds a new Tablet.
+     *
+     * @author Fan Xinkang
+     * @since version 4.4
+     */
     public static void addTablet() {
         String modelName, id, processor;
         double price;
@@ -62,13 +77,21 @@ public class TabletCRUD {
         technologyList.add(tablet);
     }
 
+    /**
+     * 更新一个平板。
+     * This method updates a Tablet.
+     *
+     * @param tabletToUpdate 要更新的平板对象。
+     *                       The Tablet object to update.
+     * @author Fan Xinkang
+     * @since version 4.4
+     */
     public static void updateTablet(Tablet tabletToUpdate) {
         if (tabletToUpdate == null) {
             printlnRandomColor("Tablet not found.");
             return;
         }
 
-        // 保存原始数据用于比较是否更改
         String originalModelName = tabletToUpdate.getModelName();
         double originalPrice = tabletToUpdate.getPrice();
         Manufacturer originalManufacturer = tabletToUpdate.getManufacturer();
@@ -76,16 +99,13 @@ public class TabletCRUD {
         String originalProcessor = tabletToUpdate.getProcessor();
         int originalStorage = tabletToUpdate.getStorage();
         String originalOperatingSystem = tabletToUpdate.getOperatingSystem();
-
         boolean modified = false;
-
         String modelName, id, processor;
         double price = originalPrice;
         int index = -1, storage = originalStorage, osIndex = -1;
         Manufacturer manufacturer;
         String operatingSystem;
 
-        // Model Name
         modelName = ScannerInput.readNextLine(STR."Enter model name (press Enter to keep '\{originalModelName}'): ");
         if (!modelName.isEmpty()) {
             while (!Utilities.isValidString(modelName, 20)) {
@@ -95,7 +115,6 @@ public class TabletCRUD {
             modified = true;
         }
 
-        // Price
         String priceInput = ScannerInput.readNextLine(STR."Enter price (press Enter to keep \{originalPrice}): ");
         if (!priceInput.isEmpty()) {
             try {
@@ -114,7 +133,6 @@ public class TabletCRUD {
             }
         }
 
-        // Manufacturer
         listAllManufacturers();
         String indexInput = ScannerInput.readNextLine(STR."Enter manufacturer index (press Enter to keep \{getManufacturers().indexOf(originalManufacturer) + 1}): ");
         if (!indexInput.isEmpty()) {
@@ -135,7 +153,6 @@ public class TabletCRUD {
             }
         }
 
-        // ID
         id = ScannerInput.readNextLine(STR."Enter ID (press Enter to keep '\{originalId}'): ");
         if (!id.isEmpty()) {
             while (!isValidId(id)) {
@@ -145,7 +162,6 @@ public class TabletCRUD {
             modified = true;
         }
 
-        // Processor
         processor = ScannerInput.readNextLine(STR."Enter processor (press Enter to keep '\{originalProcessor}'): ");
         if (!processor.isEmpty()) {
             while (!Utilities.validStringLength(processor, 20)) {
@@ -155,7 +171,6 @@ public class TabletCRUD {
             modified = true;
         }
 
-        // Storage
         String storageInput = ScannerInput.readNextLine(STR."Enter storage (press Enter to keep \{originalStorage}): ");
         if (!storageInput.isEmpty()) {
             try {
@@ -174,7 +189,6 @@ public class TabletCRUD {
             }
         }
 
-        // Operating System
         Tablet.listAllOperatingSystems();
         String osIndexInput = ScannerInput.readNextLine(STR."Enter OS index (press Enter to keep \{operatingSystems.indexOf(originalOperatingSystem) + 1}): ");
         if (!osIndexInput.isEmpty()) {
@@ -195,7 +209,6 @@ public class TabletCRUD {
             }
         }
 
-        // 判断是否有真实修改
         if (modified &&
                 originalModelName.equals(tabletToUpdate.getModelName()) &&
                 originalPrice == tabletToUpdate.getPrice() &&
@@ -214,6 +227,13 @@ public class TabletCRUD {
         printlnRandomColor(String.valueOf(tabletToUpdate));
     }
 
+    /**
+     * 列出所有平板。
+     * Lists all tablets.
+     *
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     public static void listAllTablets() {
         StringBuilder builder = new StringBuilder();
         for (Technology technology : technologyList) {
@@ -229,3 +249,7 @@ public class TabletCRUD {
         }
     }
 }
+/*
+ * End of TabletCRUD Class.
+ * Checked by Fan Xinkang on 2025/05/02.
+ */

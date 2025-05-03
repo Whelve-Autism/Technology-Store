@@ -1,0 +1,29 @@
+这是基于基础版任务而设计的额外版本，包含以下新功能：
+1、获取实时时间；
+2、随机彩色打印和随机睡眠；
+3、更严格的逻辑验证；
+4、新增了 Laptop 部分；
+5、重构代码形式（因为项目较小，不存在后期维护一说，所以我将部分方法合并，调整了方法之间的关系）；
+6、高度模仿 Spring 框架，实现代码块分离，更易理解；
+7、取消了测试类代码（原代码逻辑严谨，不通过 get, set 方法测试）；
+8、取消了不必要的接口；
+9、使用了转换器，使得序列化等操作支持 final, static 等关键字；
+10、重构目录布局，更易理解。
+
+可能还有额外功能，如果老师们愿意，可以尝试运行我的代码，希望给你们带来不一样的体验。
+感谢老师们能抽出时间来检查额外版本的任务，祝老师们工作顺利、生活愉快！
+
+This is an additional version designed based on the basic version of the assignment, including the following new features:
+1. Obtain real - time;
+2. Random color printing and random sleep;
+3. More stringent logical verification;
+4. Added the Laptop section;
+5. Refactored the code form (since the project is small and there is no need for later maintenance, I merged some methods and adjusted the relationships between methods);
+6. Highly imitated the Spring framework to achieve code block separation, making it easier to understand;
+7. Removed the test class code (the original code has a rigorous logic and is not tested through get and set methods);
+8. Removed unnecessary interfaces;
+9. Used a converter to enable operations such as serialization to support keywords like final and static;
+10. Refactored the directory layout to make it easier to understand.
+
+There may be additional features. If teachers are willing, they can try to run my code, hoping to bring you a different experience.
+Thank you teachers for taking the time to check the tasks of the additional version. Wish you all a smooth work and a happy life!

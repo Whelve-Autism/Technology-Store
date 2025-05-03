@@ -9,8 +9,23 @@ import static service.menu.MainMenu.runMainMenu;
 import static service.menu.technologymenu.computingmenu.ComputingMenu.runComputingMenu;
 import static service.menu.technologymenu.wearablemenu.WearableMenu.runWearableMenu;
 
+/**
+ * 此类用于管理科技设备菜单。
+ * This class is used to manage the technology menu.
+ *
+ * @author Fan Xinkang
+ * @version 4.3
+ * @since version 4.3
+ */
 public class TechnologyMenu {
 
+    /**
+     * 运行科技设备菜单。
+     * Run the technology menu.
+     *
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     public static void runTechnologyMenu() {
         randomSleep();
         int option = technologyMenu();
@@ -30,6 +45,15 @@ public class TechnologyMenu {
         runMainMenu();
     }
 
+    /**
+     * 展示科技设备菜单。
+     * Show the technology menu.
+     *
+     * @return int 选项。
+     *             Option.
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     private static int technologyMenu() {
         return ScannerInput.readNextInt(""" 
                * * * * * * * * * * * * * * * * * * *
@@ -47,3 +71,7 @@ public class TechnologyMenu {
                ==>""");
     }
 }
+/*
+ * End of TechnologyMenu Class.
+ * Checked by Fan Xinkang on 2025/05/03.
+ */

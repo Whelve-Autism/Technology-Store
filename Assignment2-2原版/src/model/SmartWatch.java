@@ -116,6 +116,6 @@ public class SmartWatch extends WearableDevice {
     }
 }
 /*
- * End of models.SmartWatch Class.
+ * End of SmartWatch Class.
  * Checked by Fan Xinkang on 2025/04/15.
  */

@@ -121,6 +121,6 @@ public class Tablet extends ComputingDevice {
     }
 }
 /*
- * End of models.Tablet Class.
+ * End of Tablet Class.
  * Checked by Fan Xinkang on 2025/04/15.
  */

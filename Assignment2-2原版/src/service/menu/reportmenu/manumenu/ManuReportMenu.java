@@ -8,8 +8,23 @@ import static service.UserInterface.printlnRandomColor;
 import static service.UserInterface.randomSleep;
 import static service.menu.reportmenu.ReportMenu.runReportMenu;
 
+/**
+ * 此类用于管理制造商报告菜单。
+ * This class is used to manage the manufacturer report menu.
+ *
+ * @author Fan Xinkang
+ * @version 4.3
+ * @since version 4.3
+ */
 public class ManuReportMenu {
 
+    /**
+     * 运行制造商报告菜单。
+     * Run the manufacturer report menu.
+     *
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     public static void runManuReportMenu() {
         randomSleep();
         int option = manuReportMenu();
@@ -25,6 +40,15 @@ public class ManuReportMenu {
         runReportMenu();
     }
 
+    /**
+     * 展示制造商报告菜单。
+     * Show the manufacturer report menu.
+     *
+     * @return int 选项。
+     *             Option.
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     private static int manuReportMenu() {
         return ScannerInput.readNextInt("""
                * * * * * * * * * * * * * * * * * *
@@ -38,3 +62,7 @@ public class ManuReportMenu {
                ==>""");
     }
 }
+/*
+ * End of ManuReportMenu Class.
+ * Checked by Fan Xinkang on 2025/05/01.
+ */

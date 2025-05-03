@@ -1,14 +1,23 @@
 package service;
 
-import java.util.concurrent.TimeUnit;
-
 import static service.UserInterface.*;
 
+/**
+ * 此类用于显示界面。
+ * This class is used to display the interface.
+ *
+ * @author Fan Xinkang
+ * @version 4.3
+ * @since version 4.3
+ */
 public class Display {
 
-    /*
-     * 显示开始界面。
-     * UserInterface.Display the start interface.
+    /**
+     * 显示程序启动时的界面。
+     * Show the interface when the program starts.
+     *
+     * @author Fan Xinkang
+     * @since version 4.3
      */
     public static void beginDisplay() {
         middleSlash();
@@ -37,9 +46,12 @@ public class Display {
         longSlash();
     }
 
-    /*
-     * 显示结束界面。
-     * UserInterface.Display the end interface.
+    /**
+     * 显示程序退出时的界面。
+     * Show the interface when the program exits.
+     *
+     * @author Fan Xinkang
+     * @since version 4.3
      */
     public static void endDisplay() {
         shortSlash();
@@ -49,3 +61,7 @@ public class Display {
         shortSlash();
     }
 }
+/*
+ * End of Display Class.
+ * Checked by Fan Xinkang on 2025/05/03.
+ */

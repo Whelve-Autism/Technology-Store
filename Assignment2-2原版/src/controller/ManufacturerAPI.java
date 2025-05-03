@@ -19,7 +19,7 @@ import static utils.Utilities.isValidIndex;
  * This class is used to handle manufacturer data.
  *
  * @author Guoqing Lu, Fan Xinkang
- * @version 3.1
+ * @version 4.3
  * @since version 0.0
  */
 public class ManufacturerAPI {
@@ -27,10 +27,23 @@ public class ManufacturerAPI {
     private static List<Manufacturer> manufacturers = new ArrayList<>();
     private static File file = new File("manufacturers.xml");
 
+    /**
+     * 构造函数，初始化文件路径。
+     * Constructor, initializes the file path.
+     *
+     * @param file 文件路径。
+     *             file path.
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     public ManufacturerAPI(File file) {
         ManufacturerAPI.file = file;
     }
 
+    /*
+      封装。
+      Encapsulation.
+     */
     public static List<Manufacturer> getManufacturers() {
         return manufacturers;
     }
@@ -39,10 +52,28 @@ public class ManufacturerAPI {
         ManufacturerAPI.manufacturers = manufacturers;
     }
 
+    /**
+     * 检查制造商名称是否有效。
+     * Checks if the manufacturer name is valid.
+     *
+     * @param manufacturerName 制造商名称。
+     *                         Manufacturer name.
+     * @return 验证结果。
+     *         Verification result.
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     public static boolean isValidManufacturersName(String manufacturerName) {
         return manufacturers.stream().noneMatch(manufacturer -> manufacturer.getManufacturerName().equalsIgnoreCase(manufacturerName)) && Utilities.isValidString(manufacturerName, 20);
     }
 
+    /**
+     * 添加制造商。
+     * Adds a manufacturer.
+     *
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     public static void addManufacturer() {
         String manufacturerName;
         int numEmployees;
@@ -60,6 +91,13 @@ public class ManufacturerAPI {
         printlnRandomColor("Manufacturer added successfully.");
     }
 
+    /**
+     * 更新制造商。
+     * Updates a manufacturer.
+     *
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     public static void updateManufacturer() {
         if (manufacturers.isEmpty()) {
             printlnRandomColor("No manufacturers found.");
@@ -107,6 +145,13 @@ public class ManufacturerAPI {
         printlnRandomColor("Manufacturer updated successfully.");
     }
 
+    /**
+     * 删除制造商。
+     * Deletes a manufacturer.
+     *
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     public static void deleteManufacturer() {
         if (manufacturers.isEmpty()) {
             printlnRandomColor("No manufacturers found.");
@@ -138,7 +183,13 @@ public class ManufacturerAPI {
         printlnRandomColor("Manufacturer deleted successfully.");
     }
 
-
+    /**
+     * 列出所有制造商。
+     * Lists all manufacturers.
+     *
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     public static void listAllManufacturers() {
         if (manufacturers.isEmpty()) {
             printlnRandomColor("No manufacturers found.");
@@ -153,6 +204,13 @@ public class ManufacturerAPI {
         printlnRandomColor(builder.toString());
     }
 
+    /**
+     * 按名称列出所有制造商。
+     * Lists all manufacturers by name.
+     *
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     public static void listManufacturersByName() {
         if (manufacturers.isEmpty()) {
             printlnRandomColor("No manufacturers found.");
@@ -166,10 +224,26 @@ public class ManufacturerAPI {
         }
     }
 
+    /**
+     * 获取文件名。
+     * Gets the file name.
+     *
+     * @return 文件名。
+     *         File name.
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     public String fileName() {
         return String.valueOf(file);
     }
 
+    /**
+     * 保存制造商。
+     * Saves manufacturers.
+     *
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     public static void save() {
         try {
             var xstream = new XStream(new DomDriver());
@@ -183,6 +257,13 @@ public class ManufacturerAPI {
         }
     }
 
+    /**
+     * 加载制造商。
+     * Loads manufacturers.
+     *
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     public static void load() {
         try {
             Class<?>[] classes = new Class[] { Manufacturer.class };
@@ -201,3 +282,7 @@ public class ManufacturerAPI {
         }
     }
 }
+/*
+ * End of ManufacturerAPI Class.
+ * Checked by Fan Xinkang on 2025/05/02.
+ */

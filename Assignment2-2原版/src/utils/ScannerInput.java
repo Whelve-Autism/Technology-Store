@@ -150,6 +150,6 @@ public class ScannerInput {
     }
 }
 /*
- * End of utils.ScannerInput Class.
+ * End of ScannerInput Class.
  * Checked by Fan Xinkang on 2025/04/17.
  */

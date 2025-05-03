@@ -12,8 +12,23 @@ import static controller.TechnologyAPI.isValidId;
 import static controller.TechnologyAPI.technologyList;
 import static service.UserInterface.printlnRandomColor;
 
+/**
+ * 此类用于处理智能手环相关的 CRUD 操作。
+ * This class is used to handle SmartBand related CRUD operations.
+ *
+ * @author Fan Xinkang
+ * @version 4.4
+ * @since version 4.3
+ */
 public class SmartBandCRUD {
 
+    /**
+     * 添加一个智能手环。
+     * The method adds a smart band.
+     *
+     * @author Fan Xinkang
+     * @since version 4.4
+     */
     public static void addSmartBand() {
         String modelName, id, material, size;
         double price;
@@ -58,6 +73,15 @@ public class SmartBandCRUD {
         technologyList.add(smartBand);
     }
 
+    /**
+     * 更新一个智能手环。
+     * The method updates a smart band.
+     *
+     * @param smartBandToUpdate 要更新的智能手环对象。
+     *                          The smart band to update.
+     * @author Fan Xinkang
+     * @since version 4.4
+     */
     public static void updateSmartBand(SmartBand smartBandToUpdate) {
         if (smartBandToUpdate == null) {
             printlnRandomColor("Smart band not found.");
@@ -78,7 +102,6 @@ public class SmartBandCRUD {
         Manufacturer manufacturer;
         boolean heartRateMonitor;
 
-        // Model Name
         modelName = ScannerInput.readNextLine(STR."Enter model name (press Enter to keep '\{originalModelName}'): ");
         if (!modelName.isEmpty()) {
             while (!Utilities.isValidString(modelName, 20)) {
@@ -88,7 +111,6 @@ public class SmartBandCRUD {
             modified = true;
         }
 
-        // Price
         String priceInput = ScannerInput.readNextLine(STR."Enter price (press Enter to keep \{originalPrice}): ");
         if (!priceInput.isEmpty()) {
             try {
@@ -107,7 +129,6 @@ public class SmartBandCRUD {
             }
         }
 
-        // Manufacturer
         listAllManufacturers();
         String indexInput = ScannerInput.readNextLine(STR."Enter manufacturer index (press Enter to keep \{getManufacturers().indexOf(originalManufacturer) + 1}): ");
         if (!indexInput.isEmpty()) {
@@ -128,7 +149,6 @@ public class SmartBandCRUD {
             }
         }
 
-        // ID
         id = ScannerInput.readNextLine(STR."Enter ID (press Enter to keep '\{originalId}'): ");
         if (!id.isEmpty()) {
             while (!isValidId(id)) {
@@ -138,7 +158,6 @@ public class SmartBandCRUD {
             modified = true;
         }
 
-        // Material
         material = ScannerInput.readNextLine(STR."Enter material (press Enter to keep '\{originalMaterial}'): ");
         if (!material.isEmpty()) {
             while (!Utilities.isValidString(material, 20)) {
@@ -148,7 +167,6 @@ public class SmartBandCRUD {
             modified = true;
         }
 
-        // Size
         size = ScannerInput.readNextLine(STR."Enter size (press Enter to keep '\{originalSize}'): ");
         if (!size.isEmpty()) {
             while (!Utilities.isValidString(size, 20)) {
@@ -158,7 +176,6 @@ public class SmartBandCRUD {
             modified = true;
         }
 
-        // Heart Rate Monitor
         String heartRateMonitorInput = ScannerInput.readNextLine(STR."Does it include a heart rate monitor? (y/n) (press Enter to keep \{(originalHeartRateMonitor ? "y" : "n")}): ");
         if (!heartRateMonitorInput.isEmpty()) {
             heartRateMonitor = ScannerInput.readNextBoolean("Does it include a heart rate monitor? (y/n): ");
@@ -168,7 +185,6 @@ public class SmartBandCRUD {
             }
         }
 
-        // 判断是否有真实修改
         if (modified &&
                 originalModelName.equals(smartBandToUpdate.getModelName()) &&
                 originalPrice == smartBandToUpdate.getPrice() &&
@@ -187,6 +203,13 @@ public class SmartBandCRUD {
         printlnRandomColor(String.valueOf(smartBandToUpdate));
     }
 
+    /**
+     * 列出所有手环。
+     * Lists all smart bands.
+     *
+     * @author Fan Xinkang
+     * @since version 4.4
+     */
     public static void listAllSmartBands() {
         StringBuilder builder = new StringBuilder();
         for (Technology technology : technologyList) {
@@ -202,3 +225,7 @@ public class SmartBandCRUD {
         }
     }
 }
+/*
+ * End of SmartBandCRUD.java.
+ * Checked by Fan Xinkang on 2025/05/02.
+ */

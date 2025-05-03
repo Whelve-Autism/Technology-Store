@@ -11,8 +11,23 @@ import static service.UserInterface.printlnRandomColor;
 import static service.UserInterface.randomSleep;
 import static service.menu.reportmenu.ReportMenu.runReportMenu;
 
+/**
+ * 此类用于管理科技设备报告菜单。
+ * This class is used to manage the technology device report menu.
+ *
+ * @author Fan Xinkang
+ * @version 4.3
+ * @since version 4.3
+ */
 public class TechReportMenu {
 
+    /**
+     * 运行科技产品报告菜单。
+     * Run the technology product report menu.
+     *
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     public static void runTechReportMenu() {
         randomSleep();
         int option = technologyReportMenu();
@@ -34,6 +49,15 @@ public class TechReportMenu {
         runReportMenu();
     }
 
+    /**
+     * 显示科技产品报告菜单。
+     * Show the technology product report menu.
+     *
+     * @return int 选项。
+     *             Option.
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     private static int technologyReportMenu() {
         return ScannerInput.readNextInt("""
                * * * * * * * * * * * * * * * * * * * * * * * *
@@ -50,6 +74,10 @@ public class TechReportMenu {
                * * * * * * * * * * * * * * * * * * * * * * * *
                * 0) Return to Reports Menu                   *
                * * * * * * * * * * * * * * * * * * * * * * * *
-               """);
+               ==>""");
     }
 }
+/*
+ * End of TechReportMenu Class.
+ * Checked by Fan Xinkang on 2025/05/01.
+ */

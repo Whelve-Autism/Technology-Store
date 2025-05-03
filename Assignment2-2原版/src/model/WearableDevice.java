@@ -113,6 +113,6 @@ public abstract class WearableDevice extends Technology {
     }
 }
 /*
- * End of models.WearableDevice Class.
+ * End of WearableDevice Class.
  * Checked by Fan Xinkang on 2025/04/15.
  */

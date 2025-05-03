@@ -178,21 +178,24 @@ public class Utilities {
         return ((indexToCheck >= 0) && (indexToCheck < list.size()));
     }
 
+    /**
+     * 判断一个字符串的长度是否符合标准。
+     * Checks if a string's length is valid.
+     *
+     * @param strToCheck 要判断的字符串。
+     *                   The string to check.
+     * @param maxLength 最大长度。
+     *                  The maximum length.
+     * @return 判断的结果
+     *         The validation result.
+     * @author Guoqing Lu
+     * @since version 0.0
+     */
     public static boolean isValidString(String strToCheck, int maxLength) {
         return (strToCheck != null) && (!strToCheck.trim().isEmpty()) && (strToCheck.length() <= maxLength);
     }
-
-    public static boolean isValidInt(int intToCheck, int maxLength) {
-        return (intToCheck >= 0) && (intToCheck <= maxLength);
-    }
-
-    public static boolean isValidDouble(double doubleToCheck, double maxLength) {
-        return (doubleToCheck >= 0) && (doubleToCheck <= maxLength);
-    }
-
-
 }
 /*
- * End of utils.Utilities Class.
- * Checked by Fan Xinkang on 2025/04/17.
+ * End of Utilities Class.
+ * Checked by Fan Xinkang on 2025/05/03.
  */

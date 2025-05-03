@@ -3,11 +3,11 @@ package model;
 import utils.Utilities;
 
 /**
- * 此类用于表示计算机设备，包括平板电脑，提供了通用的属性和方法。
- * This class is used to represent computing devices, including tablets, providing common attributes and methods.
+ * 此类用于表示计算机设备，包括笔记本和平板，提供了通用的属性和方法。
+ * This class is used to represent computing devices, including laptops and tablets, providing common attributes and methods.
  *
  * @author Fan Xinkang
- * @version 2.0
+ * @version 4.4
  * @since version 1.0
  */
 public abstract class ComputingDevice extends Technology {
@@ -120,6 +120,6 @@ public abstract class ComputingDevice extends Technology {
     }
 }
 /*
- * End of models.ComputingDevice Class.
+ * End of ComputingDevice Class.
  * Checked by Fan Xinkang on 2025/04/15.
  */

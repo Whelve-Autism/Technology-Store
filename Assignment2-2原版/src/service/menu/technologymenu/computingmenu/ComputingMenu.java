@@ -8,8 +8,23 @@ import static service.UserInterface.printlnRandomColor;
 import static service.UserInterface.randomSleep;
 import static service.menu.technologymenu.TechnologyMenu.runTechnologyMenu;
 
+/**
+ * 此类用于管理计算机设备菜单。
+ * This class is used to manage the computing devices' menu.
+ *
+ * @author Fan Xinkang
+ * @version 4.3
+ * @since version 4.3
+ */
 public class ComputingMenu {
 
+    /**
+     * 运行计算机设备菜单。
+     * Run the computing menu.
+     *
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     public static void runComputingMenu() {
         randomSleep();
         int option = computingMenu();
@@ -25,6 +40,15 @@ public class ComputingMenu {
         runTechnologyMenu();
     }
 
+    /**
+     * 展示计算机设备菜单。
+     * Show the computing menu.
+     *
+     * @return 选项。
+     *         Option.
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     public static int computingMenu() {
         return ScannerInput.readNextInt("""
                * * * * * * * * * * * * * * * * * *
@@ -38,3 +62,7 @@ public class ComputingMenu {
                ==>""");
     }
 }
+/*
+ * End of ComputingMenu Class.
+ * Checked by Fan Xinkang on 2025/05/03.
+ */

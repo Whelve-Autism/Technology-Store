@@ -116,6 +116,6 @@ public class SmartBand extends WearableDevice {
     }
 }
 /*
- * End of models.SmartBand Class.
+ * End of SmartBand Class.
  * Checked by Fan Xinkang on 2025/04/15.
  */

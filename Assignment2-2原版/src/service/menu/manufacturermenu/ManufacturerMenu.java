@@ -7,8 +7,23 @@ import static service.UserInterface.printlnRandomColor;
 import static service.UserInterface.randomSleep;
 import static service.menu.MainMenu.runMainMenu;
 
+/**
+ * 此类用于管理制造商菜单。
+ * This class is used to manage the manufacturer menu.
+ *
+ * @author Fan Xinkang
+ * @version 4.3
+ * @since version 4.3
+ */
 public class ManufacturerMenu {
 
+    /**
+     * 运行制造商菜单。
+     * Run the manufacturer menu.
+     *
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     public static void runManufacturerMenu() {
         randomSleep();
         int option = manufacturerMenu();
@@ -26,6 +41,15 @@ public class ManufacturerMenu {
         runMainMenu();
     }
 
+    /**
+     * 展示制造商菜单。
+     * Show the manufacturer menu.
+     *
+     * @return int 选项。
+     *             Option.
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     private static int manufacturerMenu() {
         return ScannerInput.readNextInt("""
                * * * * * * * * * * * * * * * * * *
@@ -41,3 +65,7 @@ public class ManufacturerMenu {
                ==>""");
     }
 }
+/*
+ * End of ManufacturerMenu Class.
+ * Checked by Fan Xinkang on 2025/05/01.
+ */

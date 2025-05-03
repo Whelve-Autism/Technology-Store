@@ -12,8 +12,23 @@ import static controller.TechnologyAPI.isValidId;
 import static controller.TechnologyAPI.technologyList;
 import static service.UserInterface.printlnRandomColor;
 
+/**
+ * 此类用于处理智能手表相关的 CRUD 操作。
+ * This class is used to handle SmartWatch related CRUD operations.
+ *
+ * @author Fan Xinkang
+ * @version 4.4
+ * @since version 4.3
+ */
 public class SmartWatchCRUD {
 
+    /**
+     * 添加一个智能手表。
+     * This method adds a smart watch.
+     *
+     * @author Fan Xinkang
+     * @since version 4.4
+     */
     public static void addSmartWatch() {
         String modelName, id, material, size;
         double price;
@@ -216,3 +231,7 @@ public class SmartWatchCRUD {
         }
     }
 }
+/*
+ * End of SmartWatchCRUD.java.
+ * Checked by Fan Xinkang on 2025/05/02.
+ */

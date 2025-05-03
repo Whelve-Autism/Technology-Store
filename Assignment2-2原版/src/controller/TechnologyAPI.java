@@ -15,6 +15,14 @@ import static controller.wearableCRUD.SmartBandCRUD.updateSmartBand;
 import static controller.wearableCRUD.SmartWatchCRUD.updateSmartWatch;
 import static service.UserInterface.printlnRandomColor;
 
+/**
+ * 此类用于处理科技产品的数据。
+ * This class is used to handle technology data.
+ *
+ * @author Fan Xinkang
+ * @version 4.3
+ * @since version 0.0
+ */
 public class TechnologyAPI {
 
     public static ArrayList<Technology> technologyList;
@@ -24,10 +32,23 @@ public class TechnologyAPI {
         technologyList = new ArrayList<>();
     }
 
+    /**
+     * 构造函数。
+     * Constructor.
+     *
+     * @param file 文件。
+     *             File.
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     public TechnologyAPI(File file) {
         TechnologyAPI.file = file;
     }
 
+    /*
+     * 封装。
+     * Encapsulation.
+     */
     public File getFile() {
         return file;
     }
@@ -44,6 +65,15 @@ public class TechnologyAPI {
         TechnologyAPI.technologyList = technologyList;
     }
 
+    /**
+     * 检查设备ID是否可用。
+     * Checks if a device ID is available.
+     *
+     * @param id ID
+     * @return 验证结果
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     public static boolean isValidId(String id) {
         if (technologyList == null || technologyList.isEmpty()) {
             return true;
@@ -51,15 +81,28 @@ public class TechnologyAPI {
         return technologyList.stream().noneMatch(technology -> technology.getId().equals(id)) && !id.isEmpty();
     }
 
+    /**
+     * 删除所有设备。
+     * Deletes all devices.
+     *
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     public static void deleteAllTechnologies() {
         if (technologyList == null || technologyList.isEmpty()) {
             printlnRandomColor("There are no technologies in the list.");
             return;
         }
-
         technologyList.clear();
     }
 
+    /**
+     * 删除设备。
+     * Deletes a device.
+     *
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     public static void deleteTechnology() {
         if (technologyList == null || technologyList.isEmpty()) {
             printlnRandomColor("There are no technologies in the list.");
@@ -67,7 +110,6 @@ public class TechnologyAPI {
         }
 
         listAllTechnologies();
-
         int index = ScannerInput.readNextInt("Please enter the index of the technology to delete: ");
         if (index != -1) {
             technologyList.remove(index - 1);
@@ -76,6 +118,13 @@ public class TechnologyAPI {
         }
     }
 
+    /**
+     * 更新设备。
+     * Updates a device.
+     *
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     public static void updateTechnology() {
         ArrayList<Technology> technologyList = getTechnologyList();
         if (technologyList == null || technologyList.isEmpty()) {
@@ -115,6 +164,13 @@ public class TechnologyAPI {
         }
     }
 
+    /**
+     * 列出所有设备。
+     * Lists all devices.
+     *
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     public static void listAllTechnologies() {
         if (technologyList == null || technologyList.isEmpty()) {
             printlnRandomColor("There are no technologies in the list.");
@@ -129,6 +185,13 @@ public class TechnologyAPI {
         printlnRandomColor(builder.toString());
     }
 
+    /**
+     * 列出价格高于指定价格的设备。
+     * Lists devices priced above a specified price.
+     *
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     public static void listTechnologiesAboveAPrice() {
         if (technologyList == null || technologyList.isEmpty()) {
             printlnRandomColor("There are no technologies in the list.");
@@ -144,6 +207,13 @@ public class TechnologyAPI {
         printlnRandomColor(builder.toString());
     }
 
+    /**
+     * 列出价格低于指定价格的设备。
+     * Lists devices priced below a specified price.
+     *
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     public static void listTechnologiesBelowAPrice() {
         if (technologyList == null || technologyList.isEmpty()) {
             printlnRandomColor("There are no technologies in the list.");
@@ -159,6 +229,13 @@ public class TechnologyAPI {
         printlnRandomColor(builder.toString());
     }
 
+    /**
+     * 列出最贵的前5个设备。
+     * Lists the top 5 most expensive devices.
+     *
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     public static void ListTopFiveExpansiveTechnologyDevices() {
         if (technologyList == null || technologyList.isEmpty()) {
             printlnRandomColor("There are no technologies in the list.");
@@ -172,6 +249,25 @@ public class TechnologyAPI {
         });
     }
 
+    /**
+     * 获取文件名。
+     * Gets the file name.
+     *
+     * @return 文件名
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
+    public String fileName() {
+        return String.valueOf(file);
+    }
+
+    /**
+     * 加载制造商。
+     * Loads manufacturers.
+     *
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     public static void load() {
         try {
             Class<?>[] classes = new Class[]{
@@ -201,6 +297,13 @@ public class TechnologyAPI {
         }
     }
 
+    /**
+     * 保存制造商。
+     * Saves manufacturers.
+     *
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     public static void save() {
         try {
             var xstream = new XStream(new DomDriver());
@@ -213,8 +316,8 @@ public class TechnologyAPI {
             printlnRandomColor(STR."Error saving technologies: \{e.getMessage()}");
         }
     }
-
-    public String fileName() {
-        return String.valueOf(file);
-    }
 }
+/*
+ * End of TechnologyAPI Class.
+ * Checked by Fan Xinkang on 2025/05/02.
+ */

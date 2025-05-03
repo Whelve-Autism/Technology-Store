@@ -8,8 +8,23 @@ import static service.menu.MainMenu.runMainMenu;
 import static service.menu.reportmenu.manumenu.ManuReportMenu.runManuReportMenu;
 import static service.menu.reportmenu.techmenu.TechReportMenu.runTechReportMenu;
 
+/**
+ * 此类用于管理报告菜单。
+ * This class is used to manage the report menu.
+ *
+ * @author Fan Xinkang
+ * @version 4.3
+ * @since version 4.3
+ */
 public class ReportMenu {
 
+    /**
+     * 运行报告菜单。
+     * Run the report menu.
+     *
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     public static void runReportMenu() {
         randomSleep();
         int option = reportMenu();
@@ -25,6 +40,15 @@ public class ReportMenu {
         runMainMenu();
     }
 
+    /**
+     * 展示运行报告菜单。
+     * Show the report menu.
+     *
+     * @return int 选项。
+     *             Option.
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     private static int reportMenu() {
         return ScannerInput.readNextInt(""" 
                * * * * * * * * * * * * * * * * * *
@@ -38,3 +62,7 @@ public class ReportMenu {
                ==>""");
     }
 }
+/*
+ * End of ReportMenu Class.
+ * Checked by Fan Xinkang on 2025/05/03.
+ */

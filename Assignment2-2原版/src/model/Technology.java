@@ -149,6 +149,6 @@ public abstract class Technology {
     }
 }
 /*
- * End of models.Technology Class.
+ * End of Technology Class.
  * Checked by Fan Xinkang on 2025/04/15.
  */

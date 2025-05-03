@@ -5,12 +5,16 @@ import java.time.format.DateTimeFormatter;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * 此类用于控制输出的样式，优化用户的体验。
+ * This class is used to control the output style, optimizing the user experience.
+ *
+ * @author Fan Xinkang
+ * @version 4.3
+ * @since version 4.3
+ */
 public class UserInterface {
 
-    /*
-     * 构造一个存放不同颜色的数组，用于随机选择颜色。
-     * Create an array to store different colors, used to select a color randomly.
-     */
     private static final String[] COLOURS = {
             "\u001B[91m", // 红色 (Bright Red)
             "\u001B[92m", // 绿色 (Bright Green)
@@ -21,35 +25,44 @@ public class UserInterface {
             "\u001B[97m"  // 白色 (Bright White)
     };
 
-    /*
-     * 初始化随机数，用于随机选择颜色。
-     * Initialize a random number to select a color.
-     */
     private static final Random random = new Random();
 
-
-    /*
-     * 打印随机颜色（同行）。
-     * Print random color (same line).
+    /**
+     * 输出一个随机颜色的字符串（不换行）。
+     * Output a random color string (without newline).
+     *
+     * @param word 输出的字符串。
+     *             The string to be output.
+     * @author Fan Xinkang
+     * @since version 4.3
      */
     public static void printRandomColor(String word) {
         String randomColor = COLOURS[random.nextInt(COLOURS.length)];
         System.out.print(STR."\{randomColor}\{word}\u001B[0m");
     }
 
-
-    /*
-     * 打印随机颜色（换行）。
-     * Print random color (new line).
+    /**
+     * 输出一个随机颜色的字符串（换行）。
+     * Output a random color string (with newline).
+     *
+     * @param wordln 输出的字符串。
+     *               The string to be output.
+     * @author Fan Xinkang
+     * @since version 4.3
      */
     public static void printlnRandomColor(String wordln) {
         String randomColor = COLOURS[random.nextInt(COLOURS.length)];
         System.out.println(STR."\{randomColor}\{wordln}\u001B[0m");
     }
 
-    /*
-     * 打印随机颜色（自定义图案）。
-     * Print random color for pattern.
+    /**
+     * 输出一个随机颜色的字符串（根据指定的图案）。
+     * Output a random color string (based on the specified pattern).
+     *
+     * @param pattern 指定的图案。
+     *                The specified pattern.
+     * @author Fan Xinkang
+     * @since version 4.3
      */
     public static void printRandomColorForPattern(String pattern) {
         StringBuilder result = new StringBuilder();
@@ -60,9 +73,12 @@ public class UserInterface {
         System.out.println(result.toString());
     }
 
-    /*
-     * 打印不同长度的斜杠，作为分隔符。
-     * Print different length slash as separator.
+    /**
+     * 输出短长度的斜杠。
+     * Output short length slashes.
+     *
+     * @author Fan Xinkang
+     * @since version 4.3
      */
     public static void shortSlash() {
         for (int i = 0; i < 41; i++){
@@ -71,6 +87,13 @@ public class UserInterface {
         printlnRandomColor("/");
     }
 
+    /**
+     * 输出中长度的斜杠。
+     * Output middle length slashes.
+     *
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     public static void middleSlash() {
         for (int i = 0; i < 47; i++){
             printRandomColor("/");
@@ -78,6 +101,13 @@ public class UserInterface {
         printlnRandomColor("/");
     }
 
+    /**
+     * 输出长长度的斜杠。
+     * Output long length slashes.
+     *
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     public static void longSlash() {
         for (int i = 0; i < 107; i++){
             printRandomColor("/");
@@ -85,10 +115,26 @@ public class UserInterface {
         printlnRandomColor("/");
     }
 
+    /**
+     * 获取当前时间。
+     * Get current time.
+     *
+     * @return 当前时间。
+     *         Current time.
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     public static String getLocalDateTime() {
         return LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
 
+    /**
+     * 随机休眠。
+     * Random sleep.
+     *
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     public static void randomSleep() {
         Random random = new Random();
         if (random.nextDouble() < 0.3) {
@@ -97,6 +143,13 @@ public class UserInterface {
         }
     }
 
+    /**
+     * 休眠。
+     * Sleep.
+     *
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     public static void sleep() {
         try {
             for (int i = 0; i < 10; i++) {

@@ -12,8 +12,23 @@ import static controller.TechnologyAPI.isValidId;
 import static controller.TechnologyAPI.technologyList;
 import static service.UserInterface.printlnRandomColor;
 
+/**
+ * 此类用于处理笔记本相关的 CRUD 操作。
+ * This class is used to handle Laptop related CRUD operations.
+ *
+ * @author Fan Xinkang
+ * @version 4.4
+ * @since version 4.3
+ */
 public class LaptopCRUD {
 
+    /**
+     * 添加一个笔记本。
+     * This method adds a new Laptop.
+     *
+     * @author Fan Xinkang
+     * @since version 4.4
+     */
     public static void addLaptop() {
         String modelName, id, processor;
         double price;
@@ -59,6 +74,15 @@ public class LaptopCRUD {
         technologyList.add(laptop);
     }
 
+    /**
+     * 更新指定索引的笔记本。
+     * This method updates the laptop at the specified index.
+     *
+     * @param laptopToUpdate 要更新的笔记本对象。
+     *                       The laptop object to be updated.
+     * @author Fan Xinkang
+     * @since version 4.4
+     */
     public static void updateLaptop(Laptop laptopToUpdate) {
         if (laptopToUpdate == null) {
             printlnRandomColor("Laptop not found.");
@@ -201,6 +225,13 @@ public class LaptopCRUD {
         printlnRandomColor(String.valueOf(laptopToUpdate));
     }
 
+    /**
+     * 列出所有笔记本。
+     * Lists all laptops.
+     *
+     * @author Fan Xinkang
+     * @since version 4.3
+     */
     public static void listAllLaptops() {
         StringBuilder builder = new StringBuilder();
         for (Technology laptop : technologyList) {
@@ -216,3 +247,7 @@ public class LaptopCRUD {
         }
     }
 }
+/*
+ * End of LaptopCRUD Class.
+ * Checked by Fan Xinkang on 2025/05/02.
+ */
